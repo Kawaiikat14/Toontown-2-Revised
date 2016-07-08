@@ -5,15 +5,11 @@ set MAX_CHANNELS=999999
 set STATESERVER=4002
 set ASTRON_IP=127.0.0.1:7100
 set EVENTLOGGER_IP=127.0.0.1:7198
-
-rem Get the user input:
-set /P DISTRICT_NAME="District name (DEFAULT: Nuttyboro): " || ^
 set DISTRICT_NAME=Nuttyboro
-set /P BASE_CHANNEL="Base channel (DEFAULT: 401000000): " || ^
 set BASE_CHANNEL=401000000
 
 echo ===============================
-echo Starting Toontown Stride AI server...
+echo Starting Toontown 2.0 AI server...
 echo ppython: "C:\Panda3D-1.10.0\python\ppython.exe"
 echo District name: %DISTRICT_NAME%
 echo Base channel: %BASE_CHANNEL%

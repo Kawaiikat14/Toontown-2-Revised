@@ -4,7 +4,7 @@ daemon:
 general:
     eventlogger: 127.0.0.1:7198
     dc_files:
-        - ../dclass/stride.dc
+        - ../dclass/tt2.dc
 
 messagedirector:
     bind: 127.0.0.1:7100
@@ -20,7 +20,7 @@ roles:
         max: 399999999
       backend:
         type: mongodb
-        server: mongodb://127.0.0.1:27017/stride
+        server: mongodb://127.0.0.1:27017/tt2
 
     - type: dbss
       database: 4003

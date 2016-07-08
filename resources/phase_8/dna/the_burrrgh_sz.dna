@@ -1054,16 +1054,22 @@ group "theBurrrgh" [
        letters [ "P" ]
       ]
       text [
-       letters [ "O" ]
+       letters [ "E" ]
       ]
       text [
-       letters [ "L" ]
+       letters [ "N" ]
       ]
       text [
-       letters [ "A" ]
+       letters [ "G" ]
       ]
       text [
-       letters [ "R" ]
+       letters [ "U" ]
+      ]
+      text [
+       letters [ "I" ]
+      ]
+      text [
+       letters [ "N" ]
       ]
       text [
        letters [ " " ]

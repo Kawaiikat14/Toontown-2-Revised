@@ -9,8 +9,8 @@ if cur_version < req_version:
     print 'Your version of python is too old. Please upgrade to 2.7.9.'
     sys.exit()
 
-username = os.environ['ttsUsername']
-password = os.environ['ttsPassword']
+username = os.environ['ttUsername']
+password = os.environ['ttPassword']
 distribution = 'qa'
 
 accountServerEndpoint = 'https://toontownstride.com/api/'
@@ -32,8 +32,8 @@ else:
     if response['status'] != 7:
         print response['message']
     else:
-        os.environ['TTS_PLAYCOOKIE'] = response['token']
-        os.environ['TTS_GAMESERVER'] = response['gameserver']
+        os.environ['TT_PLAYCOOKIE'] = response['token']
+        os.environ['TT_GAMESERVER'] = response['gameserver']
 
         # Start the game:
         import toontown.toonbase.ToontownStart

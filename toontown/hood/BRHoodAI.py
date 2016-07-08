@@ -27,7 +27,7 @@ class BRHoodAI(HoodAI.HoodAI):
         self.trickOrTreatMgr.generateWithRequired(3707) # Snowplace Like Home, Sleet Street
 
         self.winterCarolingMgr = DistributedEffectMgrAI.DistributedEffectMgrAI(self.air, ToontownGlobals.CHRISTMAS, 14)
-        self.winterCarolingMgr.generateWithRequired(3828) # Snowman's Land, Polar Place
+        self.winterCarolingMgr.generateWithRequired(3828) # Snowman's Land, Penguin Place
 
     def createTrolley(self):
         self.trolley = DistributedTrolleyAI.DistributedTrolleyAI(self.air)

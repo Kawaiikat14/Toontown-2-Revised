@@ -47,9 +47,9 @@ class DistributedFlowerAI(DistributedPlantBaseAI, FlowerBase):
         self.mgr.data['flowers'] = mdata
         self.mgr.update()
       
-    def removeItem(self, usingSatanPickAll=0):      
+    def removeItem(self, usingPickAll=0):      
         avId = self.air.getAvatarIdFromSender()
-        if not usingSatanPickAll:
+        if not usingPickAll:
             if avId != self.ownerDoId:
                 self.air.writeServerEvent('suspicious', avId, 'tried to remove someone else\'s flower!')
                 return
@@ -95,14 +95,14 @@ class DistributedFlowerAI(DistributedPlantBaseAI, FlowerBase):
             if task:
                 return task.done
         
-        if usingSatanPickAll:
+        if usingPickAll:
             _remove(None)
             
         else:
             taskMgr.doMethodLater(7, _remove,  self.uniqueName('do-remove'))
  
 @magicWord(category=CATEGORY_PROGRAMMER)
-def satanGrowFlowers():
+def GrowFlowers():
     av = spellbook.getTarget()
     estate = av.air.estateManager._lookupEstate(av)
     
@@ -124,7 +124,7 @@ def satanGrowFlowers():
     return '%d disgusting flowers and trees grown' % i
     
 @magicWord(category=CATEGORY_PROGRAMMER)
-def satanPickAll():
+def PickAll():
     av = spellbook.getTarget()
     estate = av.air.estateManager._lookupEstate(av)
     
