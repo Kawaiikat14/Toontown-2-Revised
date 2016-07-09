@@ -51,14 +51,14 @@ class CogHood(Hood):
         #skyMiddle = self.sky.find('**/MiddleGroup')
         #skyOuter = self.sky.find('**/OutterSky')
 
-        if not skyOuter.isEmpty():
-            skyOuter.setBin('background', 0)
-        if not skyMiddle.isEmpty():
-            skyMiddle.setDepthWrite(0)
-            skyMiddle.setBin('background', 10)
-        if not skyInner.isEmpty():
-            skyInner.setDepthWrite(0)
-            skyInner.setBin('background', 20)
+        #if not skyOuter.isEmpty():
+        #    skyOuter.setBin('background', 0)
+        #if not skyMiddle.isEmpty():
+           # skyMiddle.setDepthWrite(0)
+           # skyMiddle.setBin('background', 10)
+       # if not skyInner.isEmpty():
+         #   skyInner.setDepthWrite(0)
+         #   skyInner.setBin('background', 20)
 
         self.parentFSM.getStateNamed(self.__class__.__name__).addChild(self.fsm)
 
