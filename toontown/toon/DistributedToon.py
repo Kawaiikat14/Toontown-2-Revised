@@ -340,7 +340,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
         ResistanceChat.doEffect(msgIndex, self, nearbyToons)
 
     def d_battleSOS(self, sendToId):
-        self.cr.ttsFriendsManager.d_battleSOS(sendToId)
+        self.cr.ttFriendsManager.d_battleSOS(sendToId)
 
     def battleSOS(self, requesterId):
         avatar = base.cr.identifyAvatar(requesterId)
@@ -403,7 +403,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
             return
         if base.localAvatar.sleepFlag == 1:
             if not base.cr.identifyAvatar(avId) == base.localAvatar:
-                base.cr.ttsFriendsManager.d_sleepAutoReply(avId)
+                base.cr.ttFriendsManager.d_sleepAutoReply(avId)
         if base.whiteList:
             chat = base.whiteList.processThroughAll(chat, self.chatGarbler)
         self.displayTalkWhisper(avId, chat)
@@ -428,7 +428,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
             return
         if base.localAvatar.sleepFlag == 1:
             if not handle == base.localAvatar:
-                base.cr.ttsFriendsManager.d_sleepAutoReply(fromId)
+                base.cr.ttFriendsManager.d_sleepAutoReply(fromId)
         chatString = SCDecoders.decodeSCEmoteWhisperMsg(emoteId, handle.getName())
         if chatString:
             self.displayWhisper(fromId, chatString, WTEmote)
@@ -449,7 +449,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
             return
         if base.localAvatar.sleepFlag == 1:
             if not handle == base.localAvatar:
-                base.cr.ttsFriendsManager.d_sleepAutoReply(fromId)
+                base.cr.ttFriendsManager.d_sleepAutoReply(fromId)
         chatString = SCDecoders.decodeSCStaticTextMsg(msgIndex)
         if chatString:
             self.displayWhisper(fromId, chatString, WTNormal)
@@ -468,7 +468,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
     def whisperSCToontaskTo(self, taskId, toNpcId, toonProgress, msgIndex, sendToId):
         messenger.send('wakeup')
 
-        base.cr.ttsFriendsManager.d_whisperSCToontaskTo(sendToId, taskId,
+        base.cr.TTFriendsManager.d_whisperSCToontaskTo(sendToId, taskId,
             toNpcId, toonProgress, msgIndex
         )
 

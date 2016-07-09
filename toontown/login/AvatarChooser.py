@@ -1,6 +1,5 @@
 from panda3d.core import *
 from toontown.toonbase import ToontownGlobals
-from toontown.language import LanguageSelector
 from direct.fsm import StateData
 from direct.gui.DirectGui import *
 from toontown.toonbase import TTLocalizer
@@ -38,8 +37,6 @@ class AvatarChooser(StateData.StateData):
         base.disableMouse()
         self.title.reparentTo(aspect2d)
         self.quitButton.show()
-        if config.GetBool('want-language-selection', False):
-            self.languageButton.show()
         self.pickAToonBG.setBin('background', 1)
         self.pickAToonBG.reparentTo(aspect2d)
         base.setBackgroundColor(Vec4(0.145, 0.368, 0.78, 1))
@@ -59,7 +56,6 @@ class AvatarChooser(StateData.StateData):
         self.ignoreAll()
         self.title.reparentTo(hidden)
         self.quitButton.hide()
-        self.languageButton.hide()
         self.pickAToonBG.reparentTo(hidden)
         base.setBackgroundColor(ToontownGlobals.DefaultBackgroundColor)
         return None
@@ -78,9 +74,6 @@ class AvatarChooser(StateData.StateData):
         quitHover = gui.find('**/QuitBtn_RLVR')
         self.quitButton = DirectButton(image=(quitHover, quitHover, quitHover), relief=None, text=TTLocalizer.AvatarChooserQuit, text_font=ToontownGlobals.getSignFont(), text_fg=(0.977, 0.816, 0.133, 1), text_pos=TTLocalizer.ACquitButtonPos, text_scale=TTLocalizer.ACquitButton, image_scale=1, image1_scale=1.05, image2_scale=1.05, scale=1.05, pos=(-0.25, 0, 0.075), command=self.__handleQuit)
         self.quitButton.reparentTo(base.a2dBottomRight)
-        self.languageButton = DirectButton(relief=None, image=(quitHover, quitHover, quitHover), text=TTLocalizer.LanguageButtonText, text_font=ToontownGlobals.getSignFont(), text_fg=(0.977, 0.816, 0.133, 1), text_scale=TTLocalizer.AClanguageButton, text_pos=(0, -0.025), pos=(0.25, 0, 0.075), image_scale=1.05, image1_scale=1.05, image2_scale=1.05, scale=1.05, command=self.openLanguageGui)
-        self.languageButton.reparentTo(base.a2dBottomLeft)
-        self.languageButton.hide()
         gui.removeNode()
         gui2.removeNode()
         newGui.removeNode()
@@ -192,8 +185,6 @@ class AvatarChooser(StateData.StateData):
         del self.title
         self.quitButton.destroy()
         del self.quitButton
-        self.languageButton.destroy()
-        del self.languageButton
         self.pickAToonBG.removeNode()
         del self.pickAToonBG
         del self.avatarList
@@ -228,7 +219,3 @@ class AvatarChooser(StateData.StateData):
 
     def getChoice(self):
         return self.choice
-
-    def openLanguageGui(self):
-        self.exit()
-        LanguageSelector.LanguageSelector(self.enter).create()

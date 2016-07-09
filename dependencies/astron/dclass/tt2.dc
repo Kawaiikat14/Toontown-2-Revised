@@ -405,7 +405,7 @@ from toontown.parties import DistributedPartyJukeboxActivity/AI
 from toontown.parties import DistributedPartyJukebox40Activity/AI
 from toontown.parties import DistributedPartyValentineJukeboxActivity/AI
 from toontown.parties import DistributedPartyValentineJukebox40Activity/AI
-from toontown.friends import TTSFriendsManager/UD
+from toontown.friends import TTFriendsManager/UD
 from toontown.safezone import DistributedGolfKart/AI
 from toontown.safezone import DistributedPicnicBasket/AI
 from toontown.distributed import DistributedTimer/AI
@@ -3185,7 +3185,7 @@ struct Friend
   uint32 petId;
 };
 
-dclass TTSFriendsManager : DistributedObjectGlobal {
+dclass TTFriendsManager : DistributedObjectGlobal {
   removeFriend(uint32) clsend;
 
   requestFriendsList() clsend;

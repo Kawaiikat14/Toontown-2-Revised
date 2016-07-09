@@ -44,26 +44,26 @@ class FriendHandle:
         return idString + '-' + str(self.getDoId())
 
     def d_battleSOS(self, sendToId):
-        base.cr.ttsFriendsManager.d_battleSOS(self.doId)
+        base.cr.ttFriendsManager.d_battleSOS(self.doId)
 
     def d_teleportQuery(self, requesterId):
         teleportNotify.debug('sending d_teleportQuery(%s)' % (requesterId,))
 
-        base.cr.ttsFriendsManager.d_teleportQuery(self.doId)
+        base.cr.ttFriendsManager.d_teleportQuery(self.doId)
 
     def d_teleportResponse(self, avId, available, shardId, hoodId, zoneId):
         teleportNotify.debug('sending teleportResponse%s' % ((avId, available,
             shardId, hoodId, zoneId),)
         )
 
-        base.cr.ttsFriendsManager.d_teleportResponse(self.doId, available,
+        base.cr.ttFriendsManager.d_teleportResponse(self.doId, available,
             shardId, hoodId, zoneId
         )
 
     def d_teleportGiveup(self, requesterId):
         teleportNotify.debug('sending d_teleportGiveup(%s)' % (requesterId,))
 
-        base.cr.ttsFriendsManager.d_teleportGiveup(self.doId)
+        base.cr.ttFriendsManager.d_teleportGiveup(self.doId)
 
     def isUnderstandable(self):
         if base.cr.wantTypedChat():

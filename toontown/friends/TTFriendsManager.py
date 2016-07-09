@@ -3,7 +3,7 @@ from otp.otpbase import OTPLocalizer, OTPGlobals
 from toontown.hood import ZoneUtil
 import time
 
-class TTSFriendsManager(DistributedObjectGlobal):
+class TTFriendsManager(DistributedObjectGlobal):
     
     def __init__(self, cr):
         DistributedObjectGlobal.__init__(self, cr)

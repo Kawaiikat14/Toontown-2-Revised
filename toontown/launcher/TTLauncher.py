@@ -20,7 +20,7 @@ class LogAndOutput:
         self.orig.flush()
 
 class TTLauncher:
-    notify = DirectNotifyGlobal.directNotify.newCategory('TTSLauncher')
+    notify = DirectNotifyGlobal.directNotify.newCategory('TTLauncher')
 
     def __init__(self):
         self.http = HTTPClient()
