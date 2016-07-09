@@ -6,6 +6,7 @@ from direct.gui import DirectGui
 from toontown.toonbase import TTLocalizer
 from toontown.toon import Toon
 from direct.fsm import State
+from direct.actor.Actor import Actor
 from toontown.coghq import BossbotHQExterior
 from toontown.coghq import BossbotHQBossBattle
 from toontown.coghq import BossbotOfficeExterior
@@ -25,10 +26,12 @@ class BossbotCogHQLoader(CogHQLoader.CogHQLoader):
             state.addTransition('countryClubInterior')
 
         self.musicFile = random.choice(['phase_12/audio/bgm/Bossbot_Entry_v1.ogg', 'phase_12/audio/bgm/Bossbot_Entry_v2.ogg', 'phase_12/audio/bgm/Bossbot_Entry_v3.ogg'])
+        #self.skyFile = 'phase_12/models/bossbotHQ/ttr_m_bossbothq_sky'
         self.cogHQExteriorModelPath = 'phase_12/models/bossbotHQ/CogGolfExterior'
         self.factoryExteriorModelPath = 'phase_11/models/lawbotHQ/LB_DA_Lobby'
         self.cogHQLobbyModelPath = 'phase_12/models/bossbotHQ/CogGolfLobby'
         self.geom = None
+        return
 
     def load(self, zoneId):
         CogHQLoader.CogHQLoader.load(self, zoneId)
@@ -39,6 +42,7 @@ class BossbotCogHQLoader(CogHQLoader.CogHQLoader):
             self.geom.removeNode()
             self.geom = None
         CogHQLoader.CogHQLoader.unloadPlaceGeom(self)
+        return
 
     def loadPlaceGeom(self, zoneId):
         self.notify.info('loadPlaceGeom: %s' % zoneId)
@@ -52,13 +56,20 @@ class BossbotCogHQLoader(CogHQLoader.CogHQLoader):
             top = self.geom.find('**/TunnelEntrance')
             origin = top.find('**/tunnel_origin')
             origin.setH(-33.33)
-            self.geom.flattenMedium()
+            self.extra = Actor("phase_12/models/bossbotHQ/ttr_m_bossbothq_sky")
+            self.extra.reparentTo(self.geom)
+            self.extra.setPos(0,0,0)
+            self.extra.setScale(2.0)
+        
         elif zoneId == ToontownGlobals.BossbotLobby:
             if base.config.GetBool('want-qa-regression', 0):
                 self.notify.info('QA-REGRESSION: COGHQ: Visit BossbotLobby')
             self.notify.debug('cogHQLobbyModelPath = %s' % self.cogHQLobbyModelPath)
             self.geom = loader.loadModel(self.cogHQLobbyModelPath)
-            self.geom.flattenMedium()
+            self.extra = Actor("phase_12/models/bossbotHQ/ttr_m_bossbothq_sky")
+            self.extra.reparentTo(self.geom)
+            self.extra.setPos(0,0,0)
+            self.extra.setScale(2.0)
         else:
             self.notify.warning('loadPlaceGeom: unclassified zone %s' % zoneId)
         CogHQLoader.CogHQLoader.loadPlaceGeom(self, zoneId)
