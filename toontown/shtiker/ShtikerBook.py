@@ -238,7 +238,6 @@ class ShtikerBook(DirectFrame, StateData.StateData):
         elif pageName == TTLocalizer.NPCFriendPageTitle:
             iconModels = loader.loadModel('phase_3.5/models/gui/playingCard')
             iconImage = iconModels.find('**/card_back')
-            iconGeom = iconModels.find('**/logo')
             iconScale = 0.22
             iconModels.detachNode()
         elif pageName == TTLocalizer.KartPageTitle:

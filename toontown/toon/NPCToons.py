@@ -165,7 +165,7 @@ def createLocalNPC(npcId):
 
 # Some buildings don't have NPCs, so we need to store their zone IDs here:
 badBlocks = [
-    2606, 2602, 2708, 2705, 2704, 2701, 2803, 2804, 2809, 2805, 5607, 1707,
+    2708, 2705, 2704, 2701, 2803, 2804, 2809, 2805, 5607, 1707,
     5609, 3605, 3703
 ]
 
@@ -181,11 +181,11 @@ def isZoneProtected(zoneId):
 
 lnames = TTLocalizer.NPCToonNames
 NPCToonDict = {
- 20000: (-1, lnames[20000], ('dls', 'ms', 'm', 'm', 7, 0, 7, 7, 2, 6, 2, 6, 2, 16), 'm', 1, NPC_SPECIALQUESTGIVER),
+ 20000: (-1, lnames[20000], ('dss', 'ms', 'm', 'm', 7, 0, 7, 7, 2, 6, 2, 6, 2, 16), 'm', 1, NPC_SPECIALQUESTGIVER),
  999: (-1, lnames[999], 'r', 'm', 1, NPC_TAILOR),
  1000: (-1, lnames[1000], 'r', 'm', 1, NPC_HQ),
  20001: (-1, lnames[20001], ('dss', 'ms', 'm', 'm', 17, 0, 17, 17, 3, 3, 3, 3, 7, 2), 'm', 1, NPC_BLOCKER),
- 20002: (-1, TTLocalizer.TutorialHQOfficerName, ('dls', 'ms', 'm', 'm', 6, 0, 6, 6, 0, 10, 0, 10, 2, 9), 'm', 1, NPC_SPECIALQUESTGIVER),
+ 20002: (-1, TTLocalizer.TutorialHQOfficerName, ('dss', 'ms', 'm', 'm', 6, 0, 6, 6, 0, 10, 0, 10, 2, 9), 'm', 1, NPC_SPECIALQUESTGIVER),
  2002: (2514, lnames[2002], ('hss', 'ls', 'l', 'm', 4, 0, 4, 4, 0, 3, 0, 3, 1, 18), 'm', 1, NPC_REGULAR),
  2003: (2516, lnames[2003], ('cll', 'ms', 'l', 'm', 18, 0, 18, 18, 0, 4, 0, 4, 1, 15), 'm', 1, NPC_REGULAR),
  2004: (2521, lnames[2004], ('rll', 'md', 'm', 'f', 15, 0, 5, 7, 3, 5, 3, 5, 0, 3), 'f', 1, NPC_TAILOR),
@@ -202,10 +202,15 @@ NPCToonDict = {
  2015: (2522, lnames[2015], ('hsl', 'ls', 'm', 'm', 17, 0, 17, 17, 0, 8, 0, 8, 1, 13), 'm', 1, NPC_PETCLERK),
  2016: (2000, lnames[2016], ('sls', 'ls', 'm', 'm', 10, 0, 9, 9, 0, 3, 0, 3, 0, 18), 'm', 1, NPC_PARTYPERSON),
  2017: (2000, lnames[2017], ('sss', 'ld', 'm', 'f', 10, 0, 9, 9, 0, 23, 0, 23, 0, 5), 'f', 1, NPC_PARTYPERSON),
- 2018: (2513, lnames[2019], ('fll', 'ss', 's', 'm', 15, 0, 15, 15, 99, 27, 86, 27, 39, 27), 'm', 1, NPC_SCIENTIST),
- 2019: (2513, lnames[2018], ('pls', 'ls', 'l', 'm', 9, 0, 9, 9, 98, 27, 86, 27, 38, 27), 'm', 1, NPC_SCIENTIST),
+ 2018: (2513, lnames[2018], ('pls', 'ls', 'l', 'm', 9, 0, 9, 9, 98, 27, 86, 27, 38, 27), 'm', 1, NPC_SCIENTIST),
+ 2019: (2513, lnames[2019], ('fll', 'ss', 's', 'm', 15, 0, 15, 15, 99, 27, 86, 27, 39, 27), 'm', 1, NPC_SCIENTIST),
  2020: (2513, lnames[2020], ('hss', 'ms', 'm', 'm', 20, 0, 20, 20, 97, 27, 86, 27, 37, 27), 'm', 1, NPC_SCIENTIST),
  2021: (2000, lnames[2021], ('dss', 'ls', 's', 'm', 13, 0, 13, 13, 1, 6, 1, 6, 0, 18), 'm', 1, NPC_GLOVE),
+ 2022: (-1, lnames[2022],('cll', 'ls', 'l', 'm', 2, 0, 2, 2, 14, 9, 10, 9, 1, 14), 'm', 0, NPC_REGULAR),
+ 2023: (-1, lnames[2023], ('fls', 'ms', 'l', 'm', 14, 0, 14, 14, 152, 27, 139, 27, 59, 27), 'm', 0, NPC_REGULAR),
+ 2024: (-1, lnames[2024], ('dll', 'ls', 'l', 'm', 19, 0, 21, 8, 4, 0, 4, 0, 7, 15), 'm', 0, NPC_REGULAR),
+ 2025: (2606, lnames[2025], ('cls', 'ms', 'm', 'm', 2, 0, 2, 2, 14, 9, 10, 9, 1, 14), 'm', 0, NPC_REGULAR),
+ 2026: (2602, lnames[2026], ('mss', 'ms', 'm', 'm', 2, 0, 2, 2, 14, 9, 10, 9, 1, 14), 'm', 0, NPC_REGULAR),
  2101: (2601, lnames[2101], ('rll', 'ms', 'l', 'm', 15, 0, 15, 15, 0, 9, 0, 9, 0, 6), 'm', 1, NPC_REGULAR),
  2102: (2619, lnames[2102], 'r', 'f', 0, NPC_REGULAR),
  2103: (2616, lnames[2103], ('csl', 'ss', 's', 'm', 9, 0, 8, 5, 0, 11, 0, 11, 2, 10), 'm', 0, NPC_REGULAR),
@@ -847,7 +852,6 @@ NPCToonDict = {
  7008: (-1, lnames[7008], ('bls', 'ld', 's', 'f', 23, 0, 23, 23, 15, 6, 0, 0, 0, 18), 'f', 0, NPC_REGULAR),
  7009: (-1, lnames[7009], ('sll', 'ss', 's', 'm', 1, 0, 1, 1, 1, 6, 0, 0, 0, 6), 'm', 0, NPC_REGULAR),
  7010: (-1, lnames[7010], ('rll', 'ms', 'm', 'm', 2, 0, 2, 2, 19, 10, 13, 10, 7, 14, 0), 'm', 0, NPC_REGULAR),
- 7011: (-1, lnames[7011], ('fll', 'ls', 'm', 'm', 0, 0, 9, 0, 10, 10, 0, 10, 5, 27), 'm', 0, NPC_REGULAR),
  7012: (-1, lnames[7012], ('pss', 'ms', 'l', 'm', 20, 0, 20, 20, 26, 0, 0, 0, 15), 'm', 0, NPC_REGULAR),
  7013: (-1, lnames[7013], ('bsl', 'ms', 'm', 'f', 20, 0, 20, 20, 3, 4, 0, 0, 5, 18), 'f', 0, NPC_REGULAR),
  7014: (-1, lnames[7014], ('bll', 'ss', 's', 'm', 11, 0, 11, 11, 3, 6, 0, 0, 1, 2), 'm', 0, NPC_REGULAR),
@@ -882,7 +886,7 @@ LaffRestockPositions = {lnames[11001]: ((-27.0, -170.0, -19.6), 215.0),
 GlovePositions = {lnames[2021]: ((101, -14, 4), -305)}
 del lnames
 zone2NpcDict = {}
-
+ 
 def generateZone2NpcDict():
     if zone2NpcDict:
         return
@@ -915,21 +919,32 @@ def getBuildingTitle(zoneId):
 
 
 HQnpcFriends = {
+ 20000: (ToontownBattleGlobals.SOUND_TRACK, 5, 300, 5),
  2001: (ToontownBattleGlobals.HEAL_TRACK, 5, ToontownGlobals.MaxHpLimit, 5),
- 2132: (ToontownBattleGlobals.HEAL_TRACK, 5, 70, 4),
- 2121: (ToontownBattleGlobals.HEAL_TRACK, 5, 45, 3),
- 2011: (ToontownBattleGlobals.TRAP_TRACK, 4, 180, 5),
- 3007: (ToontownBattleGlobals.TRAP_TRACK, 4, 70, 4),
- 1001: (ToontownBattleGlobals.TRAP_TRACK, 4, 50, 3),
+ 2002: (ToontownBattleGlobals.DROP_TRACK, 5, 200, 5),
+ 2003: (ToontownBattleGlobals.SOUND_TRACK, 5, 200, 5),
+ 2005: (ToontownBattleGlobals.SOUND_TRACK, 5, 200, 5),
+ 2132: (ToontownBattleGlobals.HEAL_TRACK, 5, 100, 4),
+ 2121: (ToontownBattleGlobals.HEAL_TRACK, 5, 75, 3),
+ 2011: (ToontownBattleGlobals.TRAP_TRACK, 5, 200, 5),
+ 2018: (ToontownBattleGlobals.LURE_TRACK, 5, 0, 5),
+ 2019: (ToontownBattleGlobals.TRAP_TRACK, 5, 300, 5),
+ 2022: (ToontownBattleGlobals.DROP_TRACK, 5, 300, 5),
+ 2023: (ToontownBattleGlobals.SOUND_TRACK, 5, 300, 5),
+ 2024: (ToontownBattleGlobals.HEAL_TRACK, 5, ToontownGlobals.MaxHpLimit, 5),
+ 2025: (ToontownBattleGlobals.DROP_TRACK, 5, 250, 5),
+ 2026: (ToontownBattleGlobals.SOUND_TRACK, 5, 400, 5),
+ 3007: (ToontownBattleGlobals.TRAP_TRACK, 4, 100, 4),
+ 1001: (ToontownBattleGlobals.TRAP_TRACK, 4, 70, 4),
  3112: (ToontownBattleGlobals.LURE_TRACK, 5, 0, 5),
  1323: (ToontownBattleGlobals.LURE_TRACK, 5, 0, 3),
  2308: (ToontownBattleGlobals.LURE_TRACK, 5, 0, 3),
- 4119: (ToontownBattleGlobals.SOUND_TRACK, 5, 80, 5),
- 4219: (ToontownBattleGlobals.SOUND_TRACK, 5, 50, 4),
- 4115: (ToontownBattleGlobals.SOUND_TRACK, 5, 40, 3),
+ 4119: (ToontownBattleGlobals.SOUND_TRACK, 5, 100, 5),
+ 4219: (ToontownBattleGlobals.SOUND_TRACK, 5, 70, 4),
+ 4115: (ToontownBattleGlobals.SOUND_TRACK, 5, 70, 4),
  1116: (ToontownBattleGlobals.DROP_TRACK, 5, 170, 5),
  2311: (ToontownBattleGlobals.DROP_TRACK, 5, 100, 4),
- 4140: (ToontownBattleGlobals.DROP_TRACK, 5, 60, 3),
+ 4140: (ToontownBattleGlobals.DROP_TRACK, 5, 70, 4),
  3137: (ToontownBattleGlobals.NPC_COGS_MISS, 0, 0, 4),
  4327: (ToontownBattleGlobals.NPC_COGS_MISS, 0, 0, 4),
  4230: (ToontownBattleGlobals.NPC_COGS_MISS, 0, 0, 4),
@@ -958,6 +973,17 @@ FOnpcFriends = {
  7020: (ToontownBattleGlobals.SOUND_TRACK, 4, 30, 2),
  7021: (ToontownBattleGlobals.LURE_TRACK, 1, 0, 0),
  7022: (ToontownBattleGlobals.LURE_TRACK, 1, 0, 1),
+ 2002: (ToontownBattleGlobals.DROP_TRACK, 5, 170, 5),
+ 2003: (ToontownBattleGlobals.SOUND_TRACK, 5, 200, 5),
+ 2005: (ToontownBattleGlobals.SOUND_TRACK, 5, 180, 5),
+ 2018: (ToontownBattleGlobals.LURE_TRACK, 5, 0, 5),
+ 2019: (ToontownBattleGlobals.TRAP_TRACK, 5, 300, 5),
+ 2022: (ToontownBattleGlobals.DROP_TRACK, 5, 300, 5),
+ 2023: (ToontownBattleGlobals.SOUND_TRACK, 5, 300, 5),
+ 2024: (ToontownBattleGlobals.HEAL_TRACK, 5, ToontownGlobals.MaxHpLimit, 5),
+ 2025: (ToontownBattleGlobals.DROP_TRACK, 5, 250, 5),
+ 2026: (ToontownBattleGlobals.SOUND_TRACK, 5, 400, 5),
+ 20000: (ToontownBattleGlobals.SOUND_TRACK, 5, 300, 5),
  7023: (ToontownBattleGlobals.LURE_TRACK, 3, 0, 2)
 }
 
