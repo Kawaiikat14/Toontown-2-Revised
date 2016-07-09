@@ -47,9 +47,9 @@ class CogHood(Hood):
     def load(self):
         Hood.load(self)
 
-        skyInner = self.sky.find('**/InnerGroup')
-        skyMiddle = self.sky.find('**/MiddleGroup')
-        skyOuter = self.sky.find('**/OutterSky')
+        #skyInner = self.sky.find('**/InnerGroup')
+        #skyMiddle = self.sky.find('**/MiddleGroup')
+        #skyOuter = self.sky.find('**/OutterSky')
 
         if not skyOuter.isEmpty():
             skyOuter.setBin('background', 0)

@@ -390,7 +390,7 @@ class SuitPlannerBase:
        0,
        0,
        100),
-      (4, 5, 6),
+      (3, 4, 5, 6),
       []],
      [11200,
       10,
@@ -428,7 +428,7 @@ class SuitPlannerBase:
        0,
        100,
        0),
-      (7, 8, 9),
+      (6, 7, 8, 9),
       []],
      [13000,
       10,
@@ -447,7 +447,7 @@ class SuitPlannerBase:
        100,
        0,
        0),
-      (8, 9, 10),
+      (7, 8, 9),
       []]]
     SUIT_HOOD_INFO_ZONE = 0
     SUIT_HOOD_INFO_MIN = 1
