@@ -549,13 +549,13 @@ BossCogRollSpeed = 7.5
 BossCogTurnSpeed = 20
 BossCogTreadSpeed = 3.5
 BossCogDizzy = 0
-BossCogElectricFence = 1
-BossCogSwatLeft = 2
-BossCogSwatRight = 3
-BossCogAreaAttack = 4
+BossCogElectricFence = 5
+BossCogSwatLeft = 5
+BossCogSwatRight = 5
+BossCogAreaAttack = 15
 BossCogFrontAttack = 5
-BossCogRecoverDizzyAttack = 6
-BossCogDirectedAttack = 7
+BossCogRecoverDizzyAttack = 4.7
+BossCogDirectedAttack = 10
 BossCogStrafeAttack = 8
 BossCogNoAttack = 9
 BossCogGoonZap = 10
@@ -583,10 +583,10 @@ BossCogAttackTimes = {BossCogElectricFence: 0,
  BossCogGolfAreaAttack: 7,
  BossCogGearDirectedAttack: 4.84,
  BossCogOvertimeAttack: 5}
-BossCogDamageLevels = {BossCogElectricFence: 1,
+BossCogDamageLevels = {BossCogElectricFence: 5,
  BossCogSwatLeft: 5,
  BossCogSwatRight: 5,
- BossCogAreaAttack: 10,
+ BossCogAreaAttack: 15,
  BossCogFrontAttack: 3,
  BossCogRecoverDizzyAttack: 3,
  BossCogDirectedAttack: 3,
@@ -594,12 +594,12 @@ BossCogDamageLevels = {BossCogElectricFence: 1,
  BossCogGoonZap: 5,
  BossCogSlowDirectedAttack: 10,
  BossCogGavelStomp: 20,
- BossCogGavelHandle: 2,
+ BossCogGavelHandle: 5,
  BossCogLawyerAttack: 5,
  BossCogMoveAttack: 20,
  BossCogGolfAttack: 15,
  BossCogGolfAreaAttack: 15,
- BossCogGearDirectedAttack: 15,
+ BossCogGearDirectedAttack: 10,
  BossCogOvertimeAttack: 10}
 BossCogBattleAPosHpr = (0,
  -25,
@@ -613,8 +613,8 @@ BossCogBattleBPosHpr = (0,
  180,
  0,
  0)
-SellbotBossMaxDamage = 100
-SellbotBossMaxDamageNerfed = 100
+SellbotBossMaxDamage = 250
+SellbotBossMaxDamageNerfed = 250
 SellbotBossBattleOnePosHpr = (0,
  -35,
  0,
@@ -640,7 +640,7 @@ SellbotBossP3PosA = (-50, 40, 18)
 SellbotBossTopRampPosB = (80, -35, 18)
 SellbotBossTopRampTurnPosB = (80, 10, 18)
 SellbotBossP3PosB = (50, 60, 18)
-CashbotBossMaxDamage = 500
+CashbotBossMaxDamage = 1000
 CashbotBossOffstagePosHpr = (120,
  -195,
  0,
