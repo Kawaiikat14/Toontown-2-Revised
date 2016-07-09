@@ -1841,6 +1841,27 @@ def getTops(gender, tailorId = MAKE_A_TOON):
 
     return tops
 
+def getTopColors(gender, top, tailorId = MAKE_A_TOON):
+    if gender == 'm':
+        collection = TailorCollections[tailorId][BOY_SHIRTS]
+    else:
+        collection = TailorCollections[tailorId][GIRL_SHIRTS]
+    tops = getTopStyles(gender, tailorId)
+    colors = []
+    index = collection[tops.index(top)]
+    for color in ShirtStyles[index][2]:
+        colors.append((color[0], color[1]))
+    return colors
+
+def getTopStyles(gender, tailorId = MAKE_A_TOON):
+    if gender == 'm':
+        collection = TailorCollections[tailorId][BOY_SHIRTS]
+    else:
+        collection = TailorCollections[tailorId][GIRL_SHIRTS]
+    tops = []
+    for style in collection:
+        tops.append((ShirtStyles[style][0], ShirtStyles[style][1]))
+    return tops
 
 def getAllTops(gender):
     tops = []
@@ -1871,6 +1892,28 @@ def getBottoms(gender, tailorId = MAKE_A_TOON):
 
     return bottoms
 
+def getBottomStyles(gender, tailorId = MAKE_A_TOON):
+    if gender == 'm':
+        collection = TailorCollections[tailorId][BOY_SHORTS]
+    else:
+        collection = TailorCollections[tailorId][GIRL_BOTTOMS]
+    bottoms = []
+    for style in collection:
+            bottoms.append(BottomStyles[style][0])
+
+    return bottoms
+
+def getBottomColors(gender, bottom, tailorId = MAKE_A_TOON):
+    if gender == 'm':
+        collection = TailorCollections[tailorId][BOY_SHORTS]
+    else:
+        collection = TailorCollections[tailorId][GIRL_BOTTOMS]
+    bottoms = getBottomStyles(gender, tailorId)
+    colors = []
+    index = collection[bottoms.index(bottom)]
+    for color in BottomStyles[index][1]:
+        colors.append(color)
+    return colors
 
 def getAllBottoms(gender, output = 'both'):
     bottoms = []
@@ -1890,7 +1933,6 @@ def getAllBottoms(gender, output = 'both'):
                 bottoms.append((bottomIdx, color))
 
     return bottoms
-
 
 allColorsList = [(1.0, 1.0, 1.0, 1.0),
  (0.96, 0.69, 0.69, 1.0),
@@ -1932,12 +1974,7 @@ allColorsList = [(1.0, 1.0, 1.0, 1.0),
  (0.86, 0.07, 0.23, 1.0),
  (0.0, 0.63, 0.51, 1.0),
  (0.8, 0.49, 0.19, 1.0)]
-disallowedColorsList = [(1.0, 1.0, 1.0, 1.0),
- (0.7, 0.7, 0.8, 1.0),
- (0.3, 0.3, 0.35, 1.0),
- (0.47, 0.44, 0.44, 1.0),
- (0.74, 0.75, 0.76, 1.0)]
-matColorsList = [x for x in allColorsList if x not in disallowedColorsList]
+matColorsList = [x for x in allColorsList]
 defaultColorList = [0,
  1,
  32,
