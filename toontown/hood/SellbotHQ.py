@@ -12,7 +12,7 @@ class SellbotHQ(CogHood):
     def load(self):
         CogHood.load(self)
 
-        self.sky.setScale(2.0)
+        self.sky.setScale(3.0)
 
     def enter(self, requestStatus):
         CogHood.enter(self, requestStatus)
