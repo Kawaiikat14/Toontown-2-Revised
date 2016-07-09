@@ -197,6 +197,7 @@ Props = ((5, 'partyBall', 'partyBall'),
   'SZ_splashdown-chan'))
 CreampieColor = VBase4(250.0 / 255.0, 241.0 / 255.0, 24.0 / 255.0, 1.0)
 FruitpieColor = VBase4(55.0 / 255.0, 40.0 / 255.0, 148.0 / 255.0, 1.0)
+FruittartColor = VBase4(155.0 / 255.0, 120.0 / 255.0, 110.0 / 255.0, 1.0)
 BirthdayCakeColor = VBase4(253.0 / 255.0, 119.0 / 255.0, 220.0 / 255.0, 1.0)
 SnowballColor = VBase4(1.0, 1.0, 1.0, 1.0)
 Splats = {'tart': (0.3, FruitpieColor),
@@ -304,6 +305,7 @@ class PropPool:
             self.props[name].setScale(0.5)
         elif name == 'fruitpie':
             self.props[name].setScale(0.75)
+            self.props[name].setColor(FruittartColor)
         elif name == 'double-windsor':
             self.props[name].setScale(1.5)
         elif name[:6] == 'splat-':
@@ -317,7 +319,11 @@ class PropPool:
             tie = self.props[name]
             tie.getChild(0).setHpr(23.86, -16.03, 9.18)
         elif name == 'small-magnet':
-            self.props[name].setScale(0.5)
+            sself.props[name].setScale(0.5)
+            tex = loader.loadTexture('phase_5/maps/battle_props_palette_4amla_2.jpg')
+            tex.setMinfilter(Texture.FTLinearMipmapLinear)
+            tex.setMagfilter(Texture.FTLinear)
+            self.props[name].setTexture(tex, 1)
         elif name == 'shredder-paper':
             paper = self.props[name]
             paper.setPosHpr(2.22, -0.95, 1.16, -48.61, 26.57, -111.51)

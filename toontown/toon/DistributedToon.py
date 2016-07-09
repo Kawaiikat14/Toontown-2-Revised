@@ -67,6 +67,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
     notify = DirectNotifyGlobal.directNotify.newCategory('DistributedToon')
     partyNotify = DirectNotifyGlobal.directNotify.newCategory('DistributedToon_Party')
     chatGarbler = ToonChatGarbler.ToonChatGarbler()
+    gmNameTag = None
 
     def __init__(self, cr, bFake = False):
         try:
@@ -80,6 +81,8 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
         DistributedSmoothNode.DistributedSmoothNode.__init__(self, cr)
         self.bFake = bFake
         self.kart = None
+        self._isGM = False
+        self._gmType = None
         self.trophyScore = 0
         self.trophyStar = None
         self.trophyStarSpeed = 0
@@ -166,6 +169,10 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
         self.hostedParties = []
         self.partiesInvitedTo = []
         self.partyReplyInfoBases = []
+        self.gmState = 0
+        self.gmNameTagEnabled = 0
+        self.gmNameTagColor = 'whiteGM'
+        self.gmNameTagString = ''
         self.buffs = []
         self.redeemedCodes = []
         self.ignored = []
@@ -208,6 +215,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
             self.tunnelTrack.finish()
             self.tunnelTrack = None
         self.setTrophyScore(0)
+        self.removeGMIcon()
         if self.doId in self.cr.toons:
             del self.cr.toons[self.doId]
         DistributedPlayer.DistributedPlayer.disable(self)
@@ -275,6 +283,16 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
 
     def setShoes(self, idx, textureIdx, colorIdx):
         Toon.Toon.setShoes(self, idx, textureIdx, colorIdx)
+
+    def setGM(self, type):
+        wasGM = self._isGM
+        self._isGM = type != 0
+        self._gmType = None
+        if self._isGM:
+            self._gmType = type - 1
+        if self._isGM != wasGM:
+            self._handleGMName()
+        return
 
     def setExperience(self, experience):
         self.experience = Experience.Experience(experience, self)
@@ -384,6 +402,36 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
             return
         self.defaultZone = zoneId
 
+    def setAsGM(self, state):
+        self.notify.debug('Setting GM State: %s' % state)
+        DistributedPlayer.DistributedPlayer.setAsGM(self, state)
+ 
+    def d_updateGMNameTag(self):
+        self.refreshName()
+ 
+    def updateGMNameTag(self, tagString, color, state):
+        try:
+            unicode(tagString, 'utf-8')
+        except UnicodeDecodeError:
+            self.sendUpdate('logSuspiciousEvent', ['invalid GM name tag: %s from %s' % (tagString, self.doId)])
+            return
+ 
+    def refreshName(self):
+        return
+        self.notify.debug('Refreshing GM Nametag String: %s Color: %s State: %s' % (self.gmNameTagString, self.gmNameTagColor, self.gmNameTagEnabled))
+        if hasattr(self, 'nametag') and self.gmNameTagEnabled:
+            self.setDisplayName(self.gmNameTagString)
+            self.setName(self.gmNameTagString)
+            self.trophyStar1 = loader.loadModel('models/misc/smiley')
+            self.trophyStar1.reparentTo(self.nametag.getNameIcon())
+            self.trophyStar1.setScale(1)
+            self.trophyStar1.setZ(2.25)
+            self.trophyStar1.setColor(Vec4(0.75, 0.75, 0.75, 0.75))
+            self.trophyStar1.setTransparency(1)
+            self.trophyStarSpeed = 15
+        else:
+            taskMgr.add(self.__refreshNameCallBack, self.uniqueName('refreshNameCallBack'))
+ 
     def __starSpin1(self, task):
         now = globalClock.getFrameTime()
         r = now * 90 % 360.0
@@ -468,7 +516,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
     def whisperSCToontaskTo(self, taskId, toNpcId, toonProgress, msgIndex, sendToId):
         messenger.send('wakeup')
 
-        base.cr.TTFriendsManager.d_whisperSCToontaskTo(sendToId, taskId,
+        base.cr.ttFriendsManager.d_whisperSCToontaskTo(sendToId, taskId,
             toNpcId, toonProgress, msgIndex
         )
 
@@ -1418,6 +1466,8 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
         if self.trophyStarSpeed != 0:
             taskMgr.remove(self.uniqueName('starSpin'))
             self.trophyStarSpeed = 0
+        if hasattr(self, 'gmIcon') and self.gmIcon:
+            return
         if self.trophyScore >= ToontownGlobals.TrophyStarLevels[4]:
             self.trophyStar = loader.loadModel('phase_3.5/models/gui/name_star')
             np = NodePath(self.nametag.getNameIcon())
@@ -2347,6 +2397,71 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
                 seq = Sequence(self.hpText.posInterval(1.0, Point3(0, 0, self.height + 1.5), blendType='easeOut'), Wait(0.85), self.hpText.colorInterval(0.1, Vec4(r, g, b, 0)), Func(self.hideHpText))
                 seq.start()
 
+    def setName(self, name = 'unknownDistributedAvatar'):
+         DistributedPlayer.DistributedPlayer.setName(self, name)
+         self._handleGMName()
+ 
+    def _handleGMName(self):
+        name = self.name
+        self.setDisplayName(name)
+        if self._isGM:
+            self.setNametagStyle(5)
+            self.setGMIcon(self._gmType)
+            self.gmToonLockStyle = True
+        else:
+            self.gmToonLockStyle = False
+            self.removeGMIcon()
+            self.setNametagStyle(100)
+
+    def setGMIcon(self, gmType = None):
+        if hasattr(self, 'gmIcon') and self.gmIcon:
+            return
+        if not gmType:
+            gmType = self._gmType
+        iconInfo = (('phase_3.5/models/gui/tt_m_gui_gm_toontroop_whistle', '**/*whistleIcon*', 4),
+         ('phase_3.5/models/gui/tt_m_gui_gm_toontroop_whistle', '**/*whistleIcon*', 4),
+         ('phase_3.5/models/gui/tt_m_gui_gm_toonResistance_fist', '**/*fistIcon*', 4),
+         ('phase_3.5/models/gui/tt_m_gui_gm_toontroop_getConnected', '**/*whistleIcon*', 4))
+        if gmType > len(iconInfo) - 1:
+            return
+        modelName, searchString, scale = iconInfo[gmType]
+        icons = loader.loadModel(modelName)
+        self.gmIcon = icons.find(searchString)
+        self.gmIcon.setScale(scale)
+        np = NodePath(self.nametag.getNameIcon())
+        self.gmIcon.reparentTo(np)
+        self.setTrophyScore(self.trophyScore)
+        self.gmIcon.setZ(-2.5)
+        self.gmIcon.setY(0.0)
+        self.gmIcon.setColor(Vec4(1.0, 1.0, 1.0, 1.0))
+        self.gmIcon.setTransparency(1)
+        self.gmIconInterval = LerpHprInterval(self.gmIcon, 3.0, Point3(0, 0, 0), Point3(-360, 0, 0))
+        self.gmIconInterval.loop()
+
+    def setGMPartyIcon(self):
+        gmType = self._gmType
+        iconInfo = ('phase_3.5/models/gui/tt_m_gui_gm_toonResistance_fist', 'phase_3.5/models/gui/tt_m_gui_gm_toontroop_whistle', 'phase_3.5/models/gui/tt_m_gui_gm_toonResistance_fist', 'phase_3.5/models/gui/tt_m_gui_gm_toontroop_getConnected')
+        if gmType > len(iconInfo) - 1:
+            return
+        self.gmIcon = loader.loadModel(iconInfo[gmType])
+        self.gmIcon.reparentTo(NodePath(self.nametag.getNameIcon()))
+        self.gmIcon.setScale(3.25)
+        self.setTrophyScore(self.trophyScore)
+        self.gmIcon.setZ(1.0)
+        self.gmIcon.setY(0.0)
+        self.gmIcon.setColor(Vec4(1.0, 1.0, 1.0, 1.0))
+        self.gmIcon.setTransparency(1)
+        self.gmIconInterval = LerpHprInterval(self.gmIcon, 3.0, Point3(0, 0, 0), Point3(-360, 0, 0))
+        self.gmIconInterval.loop()
+
+    def removeGMIcon(self):
+        if hasattr(self, 'gmIconInterval') and self.gmIconInterval:
+            self.gmIconInterval.finish()
+            del self.gmIconInterval
+        if hasattr(self, 'gmIcon') and self.gmIcon:
+            self.gmIcon.detachNode()
+            del self.gmIcon
+ 
     def setAnimalSound(self, index):
         self.animalSound = index
 

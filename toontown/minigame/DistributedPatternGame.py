@@ -122,7 +122,7 @@ class DistributedPatternGame(DistributedMinigame):
         minnieX.removeNode()
         minnieCircle.removeNode()
         matchingGameGui.removeNode()
-        self.toon = NPCToons.createLocalNPC(7010)
+        self.toon = NPCToons.createLocalNPC(2025)
         self.toon.reparentTo(hidden)
         self.backRowHome = Point3(3, 11, 0)
         self.backRowXSpacing = 1.8

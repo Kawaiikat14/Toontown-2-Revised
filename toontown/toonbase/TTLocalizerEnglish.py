@@ -57,6 +57,10 @@ NametagFontNames = (
 )
 NametagLabel = ' Nametag'
 ScreenshotPath = 'user/screenshots/'
+GM_NAMES = ('TOON COUNCIL',
+ 'TOON TROOPER',
+ 'RESISTANCE RANGER',
+ 'GC')
 Flippy = 'Flippy'
 lTheBrrrgh = 'The Brrrgh'
 lDaisyGardens = 'Daisy Gardens'

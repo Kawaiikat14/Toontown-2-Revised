@@ -308,6 +308,9 @@ class NametagGroup:
             nametag.unmanage(manager)
         nametag.destroy()
 
+    def getNameIcon(self):
+        return self.icon
+
     def manage(self, manager):
         self.manager = manager
         for tag in self.nametags:
