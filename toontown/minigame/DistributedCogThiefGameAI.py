@@ -369,7 +369,7 @@ class DistributedCogThiefGameAI(DistributedMinigameAI.DistributedMinigameAI):
     def cogAtReturnPos(self, clientstamp, cogIndex, barrelIndex):
         if cogIndex not in self.cogInfo or barrelIndex not in self.barrelInfo:
             avId = self.air.getAvatarIdFromSender()
-            self.air.writeServerEvent('suspicious cogAtReturnPos avId=%s, cogIndex=%s, barrelIndex=%s' % (avId, cogIndex, barrelIndex))
+            self.air.writeServerEvent('suspicious', avId=avId, issue='cogAtReturnPos avId=%s, cogIndex=%s, barrelIndex=%s' % (avId, cogIndex, barrelIndex))
             return
         if self.cogInfo[cogIndex]['goal'] == CTGG.RunAwayGoal:
             if self.isCogCarryingThisBarrel(cogIndex, barrelIndex):
@@ -391,8 +391,8 @@ class DistributedCogThiefGameAI(DistributedMinigameAI.DistributedMinigameAI):
                 numStolen += 1
 
         self.notify.debug('numStolen = %s' % numStolen)
-        if simbase.config.GetBool('cog-thief-check-barrels', 1):
-            if not simbase.config.GetBool('cog-thief-endless', 0):
+        if config.GetBool('cog-thief-check-barrels', 1):
+            if not config.GetBool('cog-thief-endless', 0):
                 if numStolen == len(self.barrelInfo):
                     self.gameOver()
 
@@ -402,7 +402,7 @@ class DistributedCogThiefGameAI(DistributedMinigameAI.DistributedMinigameAI):
         return Task.done
 
     def getNumCogs(self):
-        result = simbase.config.GetInt('cog-thief-num-cogs', 0)
+        result = config.GetInt('cog-thief-num-cogs', 0)
         if not result:
             safezone = self.getSafezoneId()
             result = CTGG.calculateCogs(self.numPlayers, safezone)

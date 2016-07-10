@@ -377,6 +377,9 @@ from toontown.estate import DistributedAnimatedStatuary/AI
 from toontown.estate import DistributedPlantBase/AI
 from toontown.estate import DistributedLawnDecor/AI
 from toontown.minigame import DistributedVineGame/AI
+from toontown.minigame import DistributedPairingGame/AI
+from toontown.minigame import DistributedPhotoGame/AI
+from toontown.minigame import DistributedSurfersGame/AI
 from toontown.golf import DistributedPhysicsWorld/AI
 from toontown.golf import DistributedGolfHole/AI
 from toontown.golf import DistributedGolfCourse/AI
@@ -2709,6 +2712,29 @@ dclass DistributedVineGame : DistributedMinigame {
   setFallingFromVine(uint32, int8, int8, int32/100, int16/100, int16/100, int16, int8) clsend broadcast;
   setFallingFromMidair(uint32, int8, int32/100, int16/100, int16/100, int16, int8) clsend broadcast;
   setVineSections(uint8[]) required broadcast ram;
+};
+
+dclass DistributedPairingGame : DistributedMinigame {
+  setDeckSeed(uint32 deckSeed) required broadcast ram;
+  setMaxOpenCards(uint8) broadcast ram;
+  openCardRequest(int16 deckOrderIndex, int16 bonusGlowCard) airecv clsend;
+  openCardResult(int16 cardToTurnUp, uint32 avId, int16 matchingCard, int8 points, int16 cardsToTurnDown[]) broadcast;
+  reportDone() airecv clsend;
+  setEveryoneDone() broadcast;
+  setSignaling(uint32 avId) clsend broadcast;
+};
+
+dclass DistributedPhotoGame : DistributedMinigame {
+  newClientPhotoScore(uint8, char [0-256], uint32/100) airecv clsend;
+  newAIPhotoScore(uint32, uint8, uint32/100) broadcast;
+  filmOut() airecv clsend;
+};
+ 
+dclass DistributedSurfersGame : DistributedMinigame {
+  updateJellybeans(int32) clsend airecv;
+  updatePlayerScore(uint32, int32) broadcast;
+  finished() clsend airecv;
+  playerFinished(uint32, int8) broadcast;
 };
 
 dclass DistributedGolfKart : DistributedObject {

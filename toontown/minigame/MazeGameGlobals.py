@@ -9,7 +9,7 @@ def getMazeName(gameDoId, numPlayers, mazeNames):
 
 
 ENDLESS_GAME = config.GetBool('endless-maze-game', 0)
-GAME_DURATION = 60.0
+GAME_DURATION = 120.0
 SHOWSCORES_DURATION = 2.0
 SUIT_TIC_FREQ = int(256)
 WALK_SAME_DIRECTION_PROB = 4

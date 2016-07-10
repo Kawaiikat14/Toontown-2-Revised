@@ -361,7 +361,7 @@ class DistributedDivingGameAI(DistributedMinigameAI):
 
     def enterSwimming(self):
         self.notify.debug('enterSwimming')
-        duration = 65.0
+        duration = 80.0
         taskMgr.doMethodLater(duration, self.timerExpired, self.taskName('gameTimer'))
 
     def timerExpired(self, task):
