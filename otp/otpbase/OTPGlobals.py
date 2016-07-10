@@ -40,6 +40,18 @@ CEPumpkin = 12
 CEBigWhite = 13
 CESnowMan = 14
 CEGreenToon = 15
+CETinyToon = 16
+CEGiantToon = 17
+CEBeanToon = 18
+CERogerDog = 19
+CEFlippy = 20
+CESurlee = 21
+CEDimm = 22
+CEAlecTinn = 23
+CESlappy = 24
+CETutorialTom = 25
+CEOldman = 26
+CEKion = 27
 CEGhost = 'g'
 CEName2Id = {
  'normal': CENormal,
@@ -57,10 +69,25 @@ CEName2Id = {
  'pumpkin': CEPumpkin,
  'bigwhite': CEBigWhite,
  'snowman': CESnowMan,
- 'greentoon': CEGreenToon
+ 'greentoon': CEGreenToon,
+ 'tinytoon': CETinyToon,
+ 'gianttoon': CEGiantToon,
+ 'beantoon': CEBeanToon,
+ 'rogerdog': CERogerDog,
+ 'flippy': CEFlippy,
+ 'surlee': CESurlee,
+ 'dimm': CEDimm,
+ 'alectinn': CEAlecTinn,
+ 'slappy': CESlappy,
+ 'tutorialtom': CETutorialTom,
+ 'oldman': CEOldman,
+ 'kion': CEKion
 }
-BigToonScale = 1.5
-SmallToonScale = 0.5
+BeanToonScale = 2.9
+GiantToonScale = 2.1
+BigToonScale = 1.4
+SmallToonScale = 0.4
+TinyToonScale = 0.2
 DisconnectNone = 0
 DisconnectBookExit = 1
 DisconnectCloseWindow = 2

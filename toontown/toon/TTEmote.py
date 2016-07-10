@@ -316,6 +316,16 @@ def doLaugh(toon, volume = 1):
     exitTrack = Sequence(Func(toon.hideLaughMuzzle), Func(toon.blinkEyes), Func(stopAnim))
     return (track, 2, exitTrack)
 
+def doTaunt(toon, volume=1):
+    sfx = base.loadSfx('phase_4/audio/sfx/avatar_emotion_taunt.ogg')
+    track = Sequence(
+        Func(toon.blinkEyes),
+        Func(toon.play, 'taunt'),
+        Func(base.playSfx, sfx, volume=volume, node=toon)
+    )
+    duration = toon.getDuration('taunt')
+    return (track, duration, None)
+
 def doRage(toon, volume=1):
     sfx = base.loadSfx('phase_4/audio/sfx/furious_03.ogg')
     track = Sequence(
@@ -324,6 +334,90 @@ def doRage(toon, volume=1):
         Func(base.playSfx, sfx, volume=volume, node=toon)
     )
     duration = toon.getDuration('rage')
+    return (track, duration, None)
+
+def doGreened(toon, volume=1):
+    sfx = base.loadSfx('phase_5/audio/sfx/ENC_Lose.ogg')
+    track = Sequence(
+        Func(toon.blinkEyes),
+        Func(toon.sadEyes), 
+        Func(toon.play, 'lose'),
+        Wait(1),
+        Func(base.playSfx, sfx, volume=volume, node=toon)
+    )
+    duration = toon.getDuration('lose')
+    exitTrack = Sequence(Func(toon.normalEyes), Func(toon.blinkEyes))
+    return (track, duration, exitTrack)
+
+def doMelt(toon, volume=1):
+    speciesName = ToonDNA.getSpeciesName(toon.style.head)
+    sfx = base.loadSfx('phase_3.5/audio/dial/AV_' + speciesName + '_exclaim.ogg')
+    sfx2 = base.loadSfx('phase_5/audio/sfx/TL_quicksand.ogg')
+    track = Sequence(
+        Func(toon.blinkEyes),
+        Func(toon.sadEyes), 
+        Func(toon.play, 'melt'),
+        Wait(2),
+        Func(toon.play, 'teleportIn'),
+        Func(toon.play, 'teleportIn'),
+        Func(toon.play, 'teleportIn'),
+        Func(base.playSfx, sfx, volume=volume, node=toon),
+        Func(base.playSfx, sfx2, volume=volume, node=toon)
+    )
+    duration = toon.getDuration('melt')
+    exitTrack = Sequence(Func(toon.normalEyes), Func(toon.blinkEyes))
+    return (track, duration, exitTrack)
+
+def doCheer(toon, volume=1):
+    sfx = base.loadSfx('phase_4/audio/sfx/MG_win.ogg')
+    track = Sequence(
+        Func(toon.blinkEyes),
+        Func(toon.showSmileMuzzle),
+        Func(toon.play, 'good-putt'),
+        Func(base.playSfx, sfx, volume=volume, node=toon)
+    )
+    duration = toon.getDuration('good-putt')
+    exitTrack = Sequence(Func(toon.normalEyes), Func(toon.blinkEyes), Func(toon.hideSmileMuzzle))
+    return (track, duration, exitTrack)
+
+def doDuck(toon, volume=1):
+    sfx = base.loadSfx('phase_5/audio/sfx/tt_s_ara_cmg_groundquake.ogg')
+    track = Sequence(
+        Func(toon.stopBlink),
+        Func(toon.surpriseEyes),
+        Func(toon.play, 'duck'),
+        Func(base.playSfx, sfx, volume=volume, node=toon)
+    )
+    duration = toon.getDuration('duck')
+    exitTrack = Sequence(Func(toon.normalEyes), Func(toon.blinkEyes))
+    return (track, duration, exitTrack)
+
+def doLevitate(toon, volume=1):
+    sfx = base.loadSfx('phase_4/audio/sfx/Holy_Mackerel.ogg')
+    track = Sequence(
+        Func(toon.stopBlink),
+        Func(toon.showSmileMuzzle),
+        Func(toon.play, 'jump'),
+        Wait(toon.getDuration('jump') / 3.5),
+        Func(toon.play, 'jump-idle'),
+        Func(base.playSfx, sfx, volume=volume, node=toon),
+        Wait(toon.getDuration('jump-idle')),
+        Func(toon.play, 'jump-idle'),  
+        Wait(toon.getDuration('jump-idle')),
+        Func(toon.play, 'jump-land')
+
+    )
+    duration = toon.getDuration('jump-idle') + toon.getDuration('jump')/1.75
+    exitTrack = Sequence(Func(toon.normalEyes), Func(toon.blinkEyes), Func(toon.hideSmileMuzzle))
+    return (track, duration, exitTrack)
+
+def doTeleport(toon, volume=1):
+    sfx = base.loadSfx('phase_3.5/audio/sfx/AV_teleport.ogg')
+    track = Sequence(
+        Func(toon.play, 'teleport'), 
+        Func(base.playSfx, sfx, volume=volume, node=toon),
+    )
+    duration = toon.getDuration('teleport')
     return (track, duration, None)
 
 def returnToLastAnim(toon):
@@ -360,7 +454,14 @@ EmoteFunc = [[doWave, 0],
  [doDelighted, 0],
  [doFurious, 0],
  [doLaugh, 0],
- [doRage, 0]]
+ [doTaunt, 0],
+ [doRage, 0],
+ [doGreened, 0],
+ [doMelt, 0],
+ [doCheer, 0],
+ [doDuck, 0],
+ [doLevitate, 0],
+ [doTeleport, 0]]
 
 class TTEmote(Emote.Emote):
     notify = DirectNotifyGlobal.directNotify.newCategory('TTEmote')
@@ -388,7 +489,14 @@ class TTEmote(Emote.Emote):
          22,
          23,
          24,
-         25]
+         25,
+         26,
+         27,
+         28,
+         29,
+         30,
+         31,
+         32]
         self.headEmotes = [2,
          17,
          18,
@@ -399,6 +507,7 @@ class TTEmote(Emote.Emote):
         self.stateChangeMsgLocks = 0
         self.stateHasChanged = 0
         return
+
 
     def lockStateChangeMsg(self):
         self.stateChangeMsgLocks += 1

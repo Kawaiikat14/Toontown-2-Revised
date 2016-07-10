@@ -97,7 +97,7 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
         self.fishingRod = 0
         self.fishingTrophies = []
         self.trackArray = []
-        self.emoteAccess = [0] * 27
+        self.emoteAccess = [0] * 39
         self.maxMoney = 0
         self.maxBankMoney = 0
         self.bankMoney = 0
@@ -1962,10 +1962,6 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
         return anyChanged
 
     def b_setEmoteAccess(self, bits):
-        if bits[26]:
-            bits.remove(bits[26])
-        if self.emoteAccess[26]:
-            self.emoteAccess.remove(self.emoteAccess[26])
         self.setEmoteAccess(bits)
         self.d_setEmoteAccess(bits)
 
@@ -1973,18 +1969,16 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
         self.sendUpdate('setEmoteAccess', [bits])
 
     def setEmoteAccess(self, bits):
-        if bits[26]:
-            bits.remove(bits[26])
-        if self.emoteAccess[26]:
-            self.emoteAccess.remove(self.emoteAccess[26])
-        maxBitCount = len(self.emoteAccess)
-        bits = bits[:maxBitCount]
-        bitCount = len(bits)
-        if bitCount < maxBitCount:
-            bits.extend([0] * (maxBitCount-bitCount))
+        if len(bits) == 20:
+            bits.extend([0,
+             0,
+             0,
+             0,
+             0])
             self.b_setEmoteAccess(bits)
-        else:
-            self.emoteAccess = bits
+        elif len(bits) != len(self.emoteAccess):
+            return
+        self.emoteAccess = bits
 
     def getEmoteAccess(self):
         return self.emoteAccess
@@ -4325,7 +4319,7 @@ def cheesyEffect(value, hood=0, expire=0):
         if value not in OTPGlobals.CEName2Id:
             return 'Invalid cheesy effect value: %s' % value
         value = OTPGlobals.CEName2Id[value]
-    elif not 0 <= value <= 26:
+    elif not 0 <= value <= 27:
         return 'Invalid cheesy effect value: %d' % value
     if (hood != 0) and (not 1000 <= hood < ToontownGlobals.DynamicZonesBegin):
         return 'Invalid hood ID: %d' % hood

@@ -459,7 +459,7 @@ def chooseSuitShot(attack, attackDuration):
     elif name == SHAKE:
         shakeIntensity = 1.75
         camTrack.append(suitCameraShakeShot(suit, attackDuration, shakeIntensity))
-    elif name == SHRED:
+    elif name == SHRED or name == SONG_AND_DANCE:
         camTrack.append(defaultCamera(openShotDuration=4.1))
     elif name == SPIN:
         camTrack.append(defaultCamera(openShotDuration=1.7))

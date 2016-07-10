@@ -19,6 +19,19 @@ class TTHood(ToonHood):
       ToontownGlobals.CHRISTMAS: ['phase_4/dna/winter_storage_TT.pdna', 'phase_4/dna/winter_storage_TT_sz.pdna'],
       ToontownGlobals.HALLOWEEN: ['phase_4/dna/halloween_props_storage_TT.pdna', 'phase_4/dna/halloween_props_storage_TT_sz.pdna']}
 
+    def load(self):
+        ToonHood.load(self)
+        self.fog = Fog('TTFog')
+
+    def setFog(self):
+        if base.wantFog:
+            self.fog.setColor(0.9, 0.9, 0.9)
+            self.fog.setExpDensity(0.020)
+            render.clearFog()
+            render.setFog(self.fog)
+            self.sky.clearFog()
+            self.sky.setFog(self.fog)
+
 @magicWord(category=CATEGORY_CREATIVE)
 def spooky():
     """

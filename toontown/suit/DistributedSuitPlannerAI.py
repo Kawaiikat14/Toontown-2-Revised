@@ -53,7 +53,7 @@ class DistributedSuitPlannerAI(DistributedObjectAI.DistributedObjectAI, SuitPlan
     ]
     TOTAL_SUIT_BUILDING_PCT = 18 * CogdoPopFactor
     BUILDING_HEIGHT_DISTRIBUTION = [14, 18, 25, 23, 20]
-    defaultSuitName = simbase.config.GetString('suit-type', 'random')
+    defaultSuitName = simbase.config.GetString('suitType', 'random')
     if defaultSuitName == 'random':
         defaultSuitName = None
 
@@ -308,8 +308,7 @@ class DistributedSuitPlannerAI(DistributedObjectAI.DistributedObjectAI, SuitPlan
                 skelecog = 1
             if flags & IFWaiter:
                 waiter = True
-            if flags & IFV2:
-                revives = 1
+            revives = random.choice([0, 1])
             if suitDeptIndex is not None:
                 suitTrack = SuitDNA.suitDepts[suitDeptIndex]
             if suitTypeIndex is not None:
