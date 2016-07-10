@@ -3211,7 +3211,7 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
 
     def restockAllCogSummons(self):
         numSuits = len(SuitDNA.suitHeadTypes)
-        fullSetForSuit = 1 | 2 | 4 | 8
+        fullSetForSuit = 1 | 2 | 4 | 8 | 16 | 32
         allSummons = numSuits * [fullSetForSuit]
         self.b_setCogSummonsEarned(allSummons)
 
@@ -4433,7 +4433,7 @@ def maxToon(missingTrack=None):
             CogDisguiseGlobals.PartsPerSuitBitmasks[3]   # Sellbot
         ]
     )
-    target.b_setCogLevels([49] * 4)
+    target.b_setCogLevels([53] * 4)
     target.b_setCogTypes([7, 7, 7, 7])
 
     # Max their Cog gallery:

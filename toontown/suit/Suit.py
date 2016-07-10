@@ -73,6 +73,10 @@ tbc = (('cigar-smoke', 'cigar-smoke', 8),
  ('glower', 'glower', 5),
  ('song-and-dance', 'song-and-dance', 8),
  ('golf-club-swing', 'golf-club-swing', 5))
+tl = (('cigar-smoke', 'cigar-smoke', 8),
+ ('glower', 'glower', 5),
+ ('song-and-dance', 'song-and-dance', 8),
+ ('golf-club-swing', 'golf-club-swing', 5))
 cc = (('speak', 'speak', 5),
  ('glower', 'glower', 5),
  ('phone', 'phone', 3.5),
@@ -105,6 +109,12 @@ mh = (('magic1', 'magic1', 5),
  ('smile', 'smile', 5),
  ('golf-club-swing', 'golf-club-swing', 5),
  ('song-and-dance', 'song-and-dance', 5))
+pm = (('effort', 'effort', 5),
+ ('magic2', 'magic2', 5),
+ ('magic3', 'magic3', 5),
+ ('throw-paper', 'throw-paper', 5),
+ ('stomp', 'stomp', 5),
+ ('quick-jump', 'jump', 6))
 sc = (('throw-paper', 'throw-paper', 3.5), ('watercooler', 'watercooler', 5), ('pickpocket', 'pickpocket', 5))
 pp = (('throw-paper', 'throw-paper', 5), ('glower', 'glower', 5), ('finger-wag', 'fingerwag', 5))
 tw = (('throw-paper', 'throw-paper', 3.5),
@@ -116,6 +126,7 @@ nc = (('phone', 'phone', 5), ('throw-object', 'throw-object', 5))
 mb = (('magic1', 'magic1', 5), ('throw-paper', 'throw-paper', 3.5))
 ls = (('throw-paper', 'throw-paper', 5), ('throw-object', 'throw-object', 5), ('hold-pencil', 'hold-pencil', 5))
 rb = (('glower', 'glower', 5), ('cigar-smoke', 'cigar-smoke', 8), ('magic1', 'magic1', 5), ('golf-club-swing', 'golf-club-swing', 5))
+bfh = (('magic1', 'magic1', 5), ('throw-paper', 'throw-paper', 3.5))
 bf = (('pickpocket', 'pickpocket', 5),
  ('rubber-stamp', 'rubber-stamp', 5),
  ('shredder', 'shredder', 3.5),
@@ -151,6 +162,11 @@ bw = (('finger-wag', 'fingerwag', 5),
  ('magic1', 'magic1', 5),
  ('throw-object', 'throw-object', 5),
  ('throw-paper', 'throw-paper', 5))
+lk = (('speak', 'speak', 5),
+ ('magic2', 'magic2', 5),
+ ('magic1', 'magic1', 5),
+ ('golf-club-swing', 'golf-club-swing', 5),
+ ('cigar-smoke', 'cigar-smoke', 8))
 if not base.config.GetBool('want-new-cogs', 0):
     ModelDict = {'a': ('/models/char/suitA-', 4),
      'b': ('/models/char/suitB-', 4),

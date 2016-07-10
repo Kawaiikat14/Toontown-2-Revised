@@ -59,6 +59,10 @@ SHADOW_SCALE_POS = ((1.225,
   -0.0225,
   10,
   -0.025),
+ (0.9,
+  -0.0225,
+  10,
+  -0.025),
  (1.25,
   0,
   10,
@@ -75,8 +79,8 @@ SHADOW_SCALE_POS = ((1.225,
   0,
   10,
   -0.01),
- (1.05,
-  0,
+ (0.9,
+  0.005,
   10,
   -0.01),
  (0.95,
@@ -85,6 +89,10 @@ SHADOW_SCALE_POS = ((1.225,
   -0.01),
  (1.125,
   0.005,
+  10,
+  -0.035),
+ (0.85,
+  -0.005,
   10,
   -0.035),
  (0.85,
@@ -123,6 +131,10 @@ SHADOW_SCALE_POS = ((1.225,
   0,
   10,
   -0.03),
+ (0.9,
+  0,
+  10,
+  -0.03),
  (1.15,
   0,
   10,
@@ -154,6 +166,10 @@ SHADOW_SCALE_POS = ((1.225,
  (0.9,
   0.0025,
   10,
+  -0.03),
+ (0.9,
+  0.0025,
+  10,
   -0.03))
 
 class SuitPage(ShtikerPage.ShtikerPage):
@@ -164,7 +180,7 @@ class SuitPage(ShtikerPage.ShtikerPage):
     def load(self):
         ShtikerPage.ShtikerPage.load(self)
         frameModel = loader.loadModel('phase_3.5/models/gui/suitpage_frame')
-        frameModel.setScale(0.0253125, 0.03, 0.045)
+        frameModel.setScale(0.0233125, 0.02, 0.045) 
         frameModel.setPos(0, 10, -0.575)
         self.guiTop = NodePath('guiTop')
         self.guiTop.reparentTo(self)
@@ -203,7 +219,16 @@ class SuitPage(ShtikerPage.ShtikerPage):
         self.panelModel = gui.find('**/card')
         self.shadowModels = []
         for index in xrange(1, len(SuitDNA.suitHeadTypes) + 1):
-            self.shadowModels.append(gui.find('**/shadow' + str(index)))
+            if index < 9:
+                self.shadowModels.append(gui.find('**/shadow' + str(index)))
+            elif index > 9 and index < 18:
+                self.shadowModels.append(gui.find('**/shadow' + str(index - 1))) 
+            elif index > 18 and index < 27:
+                self.shadowModels.append(gui.find('**/shadow' + str(index - 2)))
+            elif index > 27 and index < 36:
+                self.shadowModels.append(gui.find('**/shadow' + str(index - 3)))
+            else:
+                self.shadowModels.append(gui.find('**/shadow' + str(32))) 
         del gui
         self.makePanels()
         self.radarOn = [0,
@@ -334,7 +359,7 @@ class SuitPage(ShtikerPage.ShtikerPage):
         base.panels = []
         xStart = -0.66
         yStart = -0.18
-        xOffset = 0.199
+        xOffset = 0.177
         yOffset = 0.284
         gui = loader.loadModel('phase_3.5/models/gui/suit_detail_panel')
         gui.find('**/avatar_panel/shadow').setColor(1, 1, 1, 0.5)
@@ -347,7 +372,7 @@ class SuitPage(ShtikerPage.ShtikerPage):
             color = PANEL_COLORS[dept]
             for type in xrange(0, SuitDNA.suitsPerDept):
                 panel = DirectLabel(parent=self.panelNode, pos=(xStart + type * xOffset, 0.0, yStart - dept * yOffset), relief=None, state=DGG.NORMAL, image=self.panelModel, image_scale=(1, 1, 1), image_color=color, text=TTLocalizer.SuitPageMystery, text_scale=0.045, text_fg=(0, 0, 0, 1), text_pos=(0, 0.185, 0), text_font=ToontownGlobals.getSuitFont(), text_wordwrap=7)
-                panel.scale = 0.6
+                panel.scale = 0.55
                 panel.setScale(panel.scale)
                 panel.quotaLabel = None
                 panel.head = None
@@ -422,6 +447,7 @@ class SuitPage(ShtikerPage.ShtikerPage):
         index = self.panels.index(panel)
         if not base.localAvatar.hasCogSummons(index):
             panel.summonButton.hide()
+        return
 
     def addBuildingRadarLabel(self, button):
         gui = loader.loadModel('phase_3.5/models/gui/suit_detail_panel')
@@ -441,8 +467,6 @@ class SuitPage(ShtikerPage.ShtikerPage):
             panel.head.hide()
         if panel.shadow:
             panel.shadow.hide()
-        if panel.summonButton:
-            panel.summonButton.hide()
         self.rolloverFrame.hide()
         panel.hoverButton.unbind(DGG.ENTER)
         panel.hoverButton.unbind(DGG.EXIT)
@@ -469,11 +493,6 @@ class SuitPage(ShtikerPage.ShtikerPage):
                 panel.shadow.show()
             else:
                 self.addSuitHead(panel, suitName)
-            if base.localAvatar.hasCogSummons(index):
-                if panel.summonButton:
-                    panel.summonButton.show()
-                else:
-                    self.addSummonButton(panel)
         elif status == COG_DEFEATED:
             count = str(base.localAvatar.cogCounts[index])
             if base.localAvatar.cogs[index] < COG_COMPLETE1:
@@ -507,9 +526,10 @@ class SuitPage(ShtikerPage.ShtikerPage):
     def updatePage(self):
         index = 0
         cogs = base.localAvatar.cogs
+        status = cogs[index]
         for dept in xrange(0, len(SuitDNA.suitDepts)):
             for type in xrange(0, SuitDNA.suitsPerDept):
-                self.updateCogStatus(dept, type, cogs[index])
+                self.updateCogStatus(dept, type, status)
                 index += 1
         self.updateCogRadarButtons(base.localAvatar.cogRadar)
         self.updateBuildingRadarButtons(base.localAvatar.buildingRadar)

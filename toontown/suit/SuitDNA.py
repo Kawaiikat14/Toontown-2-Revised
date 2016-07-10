@@ -14,6 +14,7 @@ suitHeadTypes = ['f',
  'hh',
  'cr',
  'tbc',
+ 'tl',
  'bf',
  'b',
  'dt',
@@ -22,6 +23,7 @@ suitHeadTypes = ['f',
  'sd',
  'le',
  'bw',
+ 'lk',
  'sc',
  'pp',
  'tw',
@@ -30,6 +32,7 @@ suitHeadTypes = ['f',
  'mb',
  'ls',
  'rb',
+ 'bfh',
  'cc',
  'tm',
  'nd',
@@ -37,14 +40,17 @@ suitHeadTypes = ['f',
  'ms',
  'tf',
  'm',
- 'mh']
+ 'mh',
+ 'pm']
 suitATypes = ['ym',
  'hh',
  'tbc',
+ 'tl',
  'dt',
  'bs',
  'le',
  'bw',
+ 'lk',
  'pp',
  'nc',
  'rb',
@@ -60,7 +66,8 @@ suitBTypes = ['p',
  'bc',
  'ls',
  'tm',
- 'ms']
+ 'ms',
+ 'pm']
 suitCTypes = ['f',
  'mm',
  'cr',
@@ -68,6 +75,7 @@ suitCTypes = ['f',
  'sc',
  'tw',
  'mb',
+ 'bfh',
  'cc',
  'gh']
 suitDepts = ['c',
@@ -111,7 +119,7 @@ suitsPerLevel = [1,
  1,
  1,
  1]
-suitsPerDept = 8
+suitsPerDept = 9
 goonTypes = ['pg', 'sg']
 
 def getSuitBodyType(name):
@@ -163,7 +171,7 @@ def getSuitName(deptIndex, typeIndex):
 
 
 def getRandomSuitType(level, rng = random):
-    return random.randint(max(level - 4, 1), min(level, 8))
+    return random.randint(max(level - 4, 1), min(level, 9))
 
 
 def getRandomSuitByDept(dept):
@@ -172,7 +180,7 @@ def getRandomSuitByDept(dept):
 
 def getSuitsInDept(dept):
     start = dept * suitsPerDept
-    end = start + suitsPerDept
+    end = start -1 + suitsPerDept 
     return suitHeadTypes[start:end]
 
 class SuitDNA:
