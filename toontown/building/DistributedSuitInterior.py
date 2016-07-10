@@ -250,15 +250,14 @@ class DistributedSuitInterior(DistributedObject.DistributedObject):
     def __playElevator(self, ts, name, callback):
         SuitHs = []
         SuitPositions = []
-        DeptName = SuitDNA.suitDeptFilenames[self.suits[0].style.dept]
         if self.floorModel:
             self.floorModel.removeNode()
         if self.currentFloor == 0:
-            self.floorModel = loader.loadModel('phase_7/models/modules/suit_interior_%s' % DeptName)
+            self.floorModel = loader.loadModel('phase_7/models/modules/suit_interior')
             SuitHs = self.BottomFloor_SuitHs
             SuitPositions = self.BottomFloor_SuitPositions
         elif self.currentFloor == self.numFloors - 1:
-            self.floorModel = loader.loadModel('phase_7/models/modules/boss_suit_office_%s' % DeptName)
+            self.floorModel = loader.loadModel('phase_7/models/modules/boss_suit_office')
             SuitHs = self.BossOffice_SuitHs
             SuitPositions = self.BossOffice_SuitPositions
         else:
