@@ -118,6 +118,7 @@ suitsPerLevel = [1,
  1,
  1,
  1,
+ 1,
  1]
 suitsPerDept = 9
 goonTypes = ['pg', 'sg']

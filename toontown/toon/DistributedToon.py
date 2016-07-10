@@ -1740,6 +1740,18 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
         self.effect.play()
 
     def d_reqCogSummons(self, type, suitIndex):
+        if type == 'building':
+            pass
+        elif type == 'invasion':
+            pass
+        elif type == 'cogdo':
+            pass
+        elif type == 'skelinvasion':
+            pass
+        elif type == 'waiterinvasion':
+            pass
+        elif type == 'v2invasion':
+            pass
         self.sendUpdate('reqCogSummons', [type, suitIndex])
 
     def cogSummonsResponse(self, returnCode, suitIndex, doId):
@@ -2548,7 +2560,7 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
     
     def wipeStats(self):
         self.sendUpdate('wipeStats')
-
+ 
 @magicWord(category=CATEGORY_COMMUNITY_MANAGER)
 def globalTeleport():
     """
