@@ -553,13 +553,13 @@ BossCogRollSpeed = 7.5
 BossCogTurnSpeed = 20
 BossCogTreadSpeed = 3.5
 BossCogDizzy = 0
-BossCogElectricFence = 5
-BossCogSwatLeft = 5
-BossCogSwatRight = 5
-BossCogAreaAttack = 15
+BossCogElectricFence = 1
+BossCogSwatLeft = 2
+BossCogSwatRight = 3
+BossCogAreaAttack = 4
 BossCogFrontAttack = 5
-BossCogRecoverDizzyAttack = 4.7
-BossCogDirectedAttack = 10
+BossCogRecoverDizzyAttack = 6
+BossCogDirectedAttack = 7
 BossCogStrafeAttack = 8
 BossCogNoAttack = 9
 BossCogGoonZap = 10
@@ -576,7 +576,7 @@ BossCogOvertimeAttack = 20
 BossCogAttackTimes = {BossCogElectricFence: 0,
  BossCogSwatLeft: 5.5,
  BossCogSwatRight: 5.5,
- BossCogAreaAttack: 4.5,
+ BossCogAreaAttack: 4.21,
  BossCogFrontAttack: 2.65,
  BossCogRecoverDizzyAttack: 5.1,
  BossCogDirectedAttack: 4.84,
@@ -587,10 +587,10 @@ BossCogAttackTimes = {BossCogElectricFence: 0,
  BossCogGolfAreaAttack: 7,
  BossCogGearDirectedAttack: 4.84,
  BossCogOvertimeAttack: 5}
-BossCogDamageLevels = {BossCogElectricFence: 5,
+BossCogDamageLevels = {BossCogElectricFence: 1,
  BossCogSwatLeft: 5,
  BossCogSwatRight: 5,
- BossCogAreaAttack: 15,
+ BossCogAreaAttack: 10,
  BossCogFrontAttack: 3,
  BossCogRecoverDizzyAttack: 3,
  BossCogDirectedAttack: 3,
@@ -598,12 +598,12 @@ BossCogDamageLevels = {BossCogElectricFence: 5,
  BossCogGoonZap: 5,
  BossCogSlowDirectedAttack: 10,
  BossCogGavelStomp: 20,
- BossCogGavelHandle: 5,
+ BossCogGavelHandle: 2,
  BossCogLawyerAttack: 5,
  BossCogMoveAttack: 20,
  BossCogGolfAttack: 15,
  BossCogGolfAreaAttack: 15,
- BossCogGearDirectedAttack: 10,
+ BossCogGearDirectedAttack: 15,
  BossCogOvertimeAttack: 10}
 BossCogBattleAPosHpr = (0,
  -25,
@@ -1346,7 +1346,7 @@ LawbotBossCannonBallMax = 12
 LawbotBossJuryBoxStartPos = (94, -8, 5)
 LawbotBossJuryBoxRelativeEndPos = (30, 0, 12.645)
 LawbotBossJuryBoxMoveTime = 70
-LawbotBossJurorsForBalancedScale = 8
+LawbotBossJurorsForBalancedScale = 9
 LawbotBossDamagePerJuror = 68
 LawbotBossCogJurorFlightTime = 10
 LawbotBossCogJurorDistance = 75
