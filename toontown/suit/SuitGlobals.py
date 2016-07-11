@@ -23,15 +23,15 @@ suitProperties = {'f': (4.0 / cSize, SuitDNA.corpPolyColor, ['flunky', 'glasses'
                   'hh': (6.5 / aSize, SuitDNA.corpPolyColor, ['headhunter'], '', 7.45),
                   'cr': (6.75 / cSize, VBase4(0.85, 0.55, 0.55, 1.0), ['flunky'], 'corporate-raider.jpg', 8.23),
                   'tbc': (7.0 / aSize, VBase4(0.75, 0.95, 0.75, 1.0), ['bigcheese'], '', 9.34),
-                  'tl': (7.3 / aSize, SuitDNA.corpPolyColor, ['twoface'], 'toxic-leader.jpg', 9.5),
+                  'tl': (7.3 / aSize, VBase4(2.55, 2.55, 0, 1.0), ['twoface'], 'toxic-leader.jpg', 9.5),
                   # Lawbots
                   'bf': (4.0 / cSize, SuitDNA.legalPolyColor, ['tightwad'], 'bottom-feeder.jpg', 4.81),
                   'b': (4.375 / bSize, VBase4(0.95, 0.95, 1.0, 1.0), ['movershaker'], 'blood-sucker.jpg', 6.17),
                   'dt': (4.25 / aSize, SuitDNA.legalPolyColor, ['twoface'], 'double-talker.jpg', 5.63),
                   'ac': (4.35 / bSize, SuitDNA.legalPolyColor, ['ambulancechaser'], '', 6.39),
-                  'bs': (4.5 / aSize, SuitDNA.legalPolyColor, ['backstabber'], '', 6.71),
+                  'bs': (4.5 / aSize, VBase4(2.55, 0.5, 1.50, 1.0), ['backstabber'], '', 6.71),
                   'sd': (5.65 / bSize, VBase4(0.5, 0.8, 0.75, 1.0), ['telemarketer'], 'spin_doctor.jpg', 7.9),
-                  'le': (7.125 / aSize, VBase4(0.25, 0.25, 0.5, 1.0), ['legaleagle'], '', 8.27),
+                  'le': (7.125 / aSize, VBase4(2.55, 0.55, 0, 1.0), ['legaleagle'], '', 8.27),
                   'bw': (7.0 / aSize, SuitDNA.legalPolyColor, ['bigwig'], '', 8.69),
                   'lk': (7.0 / aSize, SuitDNA.legalPolyColor, ['twoface'], 'law-keeper.jpg', 8.69),
                   # Cashbots
@@ -43,7 +43,7 @@ suitProperties = {'f': (4.0 / cSize, SuitDNA.corpPolyColor, ['flunky', 'glasses'
                   'mb': (5.3 / cSize, SuitDNA.moneyPolyColor, ['moneybags'], '', 6.97),
                   'ls': (6.5 / bSize, VBase4(0.5, 0.85, 0.75, 1.0), ['loanshark'], '', 8.58),
                   'rb': (7.0 / aSize, VBase4(0.25, 0.25, 0.5, 1.0), ['yesman'], 'robber-baron.jpg', 8.23),
-                  'bfh': (7.3 / cSize, SuitDNA.moneyPolyColor, ['tightwad'], 'big-fish.jpg', 9.5),
+                  'bfh': (7.3 / cSize, VBase4(2.55, 0.25, 0.5, 1.0), ['tightwad'], 'big-fish.jpg', 9.5),
                   # Sellbots
                   'cc': (3.5 / cSize, VBase4(0.55, 0.65, 1.0, 1.0), ['coldcaller'], '', 4.63),
                   'tm': (3.75 / bSize, SuitDNA.corpPolyColor, ['telemarketer'], '', 5.24),
