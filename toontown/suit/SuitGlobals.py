@@ -23,7 +23,7 @@ suitProperties = {'f': (4.0 / cSize, SuitDNA.corpPolyColor, ['flunky', 'glasses'
                   'hh': (6.5 / aSize, SuitDNA.corpPolyColor, ['headhunter'], '', 7.45),
                   'cr': (6.75 / cSize, VBase4(0.85, 0.55, 0.55, 1.0), ['flunky'], 'corporate-raider.jpg', 8.23),
                   'tbc': (7.0 / aSize, VBase4(0.75, 0.95, 0.75, 1.0), ['bigcheese'], '', 9.34),
-                  'tl': (7.5 / aSize, SuitDNA.corpPolyColor, ['twoface'], 'toxic-leader.jpg', 9.5),
+                  'tl': (7.3 / aSize, SuitDNA.corpPolyColor, ['twoface'], 'toxic-leader.jpg', 9.5),
                   # Lawbots
                   'bf': (4.0 / cSize, SuitDNA.legalPolyColor, ['tightwad'], 'bottom-feeder.jpg', 4.81),
                   'b': (4.375 / bSize, VBase4(0.95, 0.95, 1.0, 1.0), ['movershaker'], 'blood-sucker.jpg', 6.17),
@@ -42,8 +42,8 @@ suitProperties = {'f': (4.0 / cSize, SuitDNA.corpPolyColor, ['flunky', 'glasses'
                   'nc': (5.25 / aSize, SuitDNA.moneyPolyColor, ['numbercruncher'], '', 7.22),
                   'mb': (5.3 / cSize, SuitDNA.moneyPolyColor, ['moneybags'], '', 6.97),
                   'ls': (6.5 / bSize, VBase4(0.5, 0.85, 0.75, 1.0), ['loanshark'], '', 8.58),
-                  'rb': (7.0 / aSize, VBase4(0.25, 0.25, 0.5, 1.0), ['yesman'], 'robber-baron.jpg', 8.95),
-                  'bfh': (7.5 / cSize, SuitDNA.moneyPolyColor, ['tightwad'], 'big-fish.jpg', 9.0),
+                  'rb': (7.0 / aSize, VBase4(0.25, 0.25, 0.5, 1.0), ['yesman'], 'robber-baron.jpg', 8.23),
+                  'bfh': (7.3 / cSize, SuitDNA.moneyPolyColor, ['tightwad'], 'big-fish.jpg', 9.5),
                   # Sellbots
                   'cc': (3.5 / cSize, VBase4(0.55, 0.65, 1.0, 1.0), ['coldcaller'], '', 4.63),
                   'tm': (3.75 / bSize, SuitDNA.salesPolyColor, ['telemarketer'], '', 5.24),
@@ -53,5 +53,5 @@ suitProperties = {'f': (4.0 / cSize, SuitDNA.corpPolyColor, ['flunky', 'glasses'
                   'tf': (5.25 / aSize, SuitDNA.salesPolyColor, ['twoface'], '', 6.95),
                   'm': (5.75 / aSize, SuitDNA.salesPolyColor, ['twoface'], 'mingler.jpg', 7.61),
                   'mh': (7.0 / aSize, SuitDNA.salesPolyColor, ['yesman'], '', 8.95),
-                  'pm': (7.5 / bSize, SuitDNA.salesPolyColor, ['movershaker'], 'prime-mover.jpg', 9.0),
+                  'pm': (7.3 / bSize, SuitDNA.salesPolyColor, ['movershaker'], 'prime-mover.jpg', 9.5),
                   }
