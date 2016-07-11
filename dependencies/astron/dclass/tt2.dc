@@ -760,6 +760,7 @@ dclass DistributedToon : DistributedPlayer {
   requestFishingRod(uint8) airecv ownsend;
   wipeStats() airecv ownsend;
   takeMoney(int16) airecv ownsend;
+  attemptSubtractNPCFriend(uint32 npcId) ownsend airecv;
 };
 
 dclass DistributedPartyGate : DistributedObject {

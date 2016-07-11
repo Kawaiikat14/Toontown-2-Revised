@@ -59,6 +59,10 @@ class CatalogScreen(DirectFrame):
         self.hide()
         self.clarabelleChatNP = None
         self.clarabelleChatBalloon = None
+        self.clarabelleGreetingSfx = None
+        self.clarabelleGoodbyeSfx = None
+        self.clarabelleErrorSfx = None
+        self.clarabelleChatterSfx = None
         self.createdGiftGui = None
         self.viewing = None
 
@@ -867,7 +871,23 @@ class CatalogScreen(DirectFrame):
         if self.clarabelleChatBalloon:
             self.clarabelleChatBalloon.removeNode()
             del self.clarabelleChatBalloon
-
+        if self.clarabelleGreetingSfx:
+            for sound in self.clarabelleGreetingSfx:
+                del sound
+            del self.clarabelleGreetingSfx
+        if self.clarabelleGoodbyeSfx:
+            for sound in self.clarabelleGoodbyeSfx:
+                del sound
+            del self.clarabelleGoodbyeSfx
+        if self.clarabelleErrorSfx:
+            for sound in self.clarabelleGoodbyeSfx:
+                del sound
+            del self.clarabelleGoodbyeSfx
+        if self.clarabelleChatterSfx:
+            for sound in self.clarabelleChatterSfx:
+                del sound
+            del self.clarabelleChatterSfx
+ 
     def hangUp(self):
         self.setClarabelleChat(random.choice(TTLocalizer.CatalogGoodbyeList), type='goodbye')
         self.setPageIndex(-1)
@@ -945,16 +965,40 @@ class CatalogScreen(DirectFrame):
 
     def setClarabelleChat(self, str, timeout = 6, type = None):
         self.clearClarabelleChat()
+        if type == 'greeting':
+            if not self.clarabelleGreetingSfx:
+                clarabelleGreeting1 = base.loadSfx('phase_5.5/audio/dial/clarabelle_ah_1.ogg')
+                clarabelleGreeting2 = base.loadSfx('phase_5.5/audio/dial/clarabelle_ah_2.ogg')
+                self.clarabelleGreetingSfx = [clarabelleGreeting1, clarabelleGreeting2]
+            base.playSfx(random.choice(self.clarabelleGreetingSfx))
+        elif type == 'goodbye':
+            if not self.clarabelleGoodbyeSfx:
+                clarabelleGoodbye1 = base.loadSfx('phase_5.5/audio/dial/clarabelle_wa_1.ogg')
+                clarabelleGoodbye2 = base.loadSfx('phase_5.5/audio/dial/clarabelle_wa_2.ogg')
+                clarabelleGoodbye3 = base.loadSfx('phase_5.5/audio/dial/clarabelle_wa_3.ogg')
+                clarabelleGoodbye4 = base.loadSfx('phase_5.5/audio/dial/clarabelle_wa_4.ogg')
+                self.clarabelleGoodbyeSfx = [clarabelleGoodbye1, clarabelleGoodbye2, clarabelleGoodbye3, clarabelleGoodbye4]
+            base.playSfx(random.choice(self.clarabelleGoodbyeSfx))
+        elif type == 'error':
+            if not self.clarabelleErrorSfx:
+                clarabelleError1 = base.loadSfx('phase_5.5/audio/dial/clarabelle_ah_2.ogg')
+                self.clarabelleChatterSfx = [clarabelleError1]
+            base.playSfx(random.choice(self.clarabelleErrorSfx))
+        else:
+            if not self.clarabelleChatterSfx:
+                clarabelleChatter1 = base.loadSfx('phase_5.5/audio/dial/clarabelle_ah_1.ogg')
+                clarabelleChatter2 = base.loadSfx('phase_5.5/audio/dial/clarabelle_ah_2.ogg')
+                clarabelleChatter3 = base.loadSfx('phase_5.5/audio/dial/clarabelle_gen_2.ogg')
+                self.clarabelleChatterSfx = [clarabelleChatter1, clarabelleChatter2, clarabelleChatter3]
+            base.playSfx(random.choice(self.clarabelleChatterSfx))
 
         if not self.clarabelleChatBalloon:
             self.clarabelleChatBalloon = loader.loadModel('phase_3/models/props/chatbox')
-
         self.clarabelleChat = ChatBalloon(self.clarabelleChatBalloon)
         chatNode = self.clarabelleChat.generate(str, ToontownGlobals.getInterfaceFont())[0]
         self.clarabelleChatNP = self.attachNewNode(chatNode.node(), 1000)
         self.clarabelleChatNP.setScale(0.08)
         self.clarabelleChatNP.setPos(0.7, 0, 0.6)
-
         if timeout:
             taskMgr.doMethodLater(timeout, self.clearClarabelleChat, 'clearClarabelleChat')
 

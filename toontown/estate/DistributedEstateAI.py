@@ -12,7 +12,6 @@ from toontown.safezone import DistributedEFlyingTreasureAI
 from toontown.safezone import ButterflyGlobals
 from toontown.safezone import DistributedButterflyAI
 from toontown.safezone.DistributedFishingSpotAI import DistributedFishingSpotAI
-from toontown.parties.DistributedPartyJukeboxActivityAI import DistributedPartyJukeboxActivityAI
 
 from DistributedGardenBoxAI import *
 from DistributedGardenPlotAI import *
@@ -484,7 +483,6 @@ class DistributedEstateAI(DistributedObjectAI):
         self.rentalHandle = None
         
         self.pond = None
-        self.jukebox = None
         self.spots = []
         self.butterflies = []
 
@@ -493,9 +491,7 @@ class DistributedEstateAI(DistributedObjectAI):
         self.gardenManager = GardenManager(self)
         self.__pendingGardens = {}
     
-    @property
-    def hostId(self):
-        return 1000000001
+    
         
     def generate(self):
         DistributedObjectAI.generate(self)
@@ -533,13 +529,6 @@ class DistributedEstateAI(DistributedObjectAI):
         spot.generateWithRequired(self.zoneId)
         self.spots.append(spot)
         
-        self.jukebox = DistributedPartyJukeboxActivityAI(self.air, self.doId, (0, 0, 0, 0))
-        self.jukebox.generateWithRequired(self.zoneId)
-        self.jukebox.sendUpdate('setX', [-21.8630])
-        self.jukebox.sendUpdate('setY', [-154.669])
-        self.jukebox.sendUpdate('setH', [148.7050])
-        self.jukebox.sendUpdate('unloadSign')
-
         ButterflyGlobals.generateIndexes(self.zoneId, ButterflyGlobals.ESTATE)
         for i in xrange(0, ButterflyGlobals.NUM_BUTTERFLY_AREAS[ButterflyGlobals.ESTATE]):
             for j in xrange(0, ButterflyGlobals.NUM_BUTTERFLIES[ButterflyGlobals.ESTATE]):
@@ -562,8 +551,6 @@ class DistributedEstateAI(DistributedObjectAI):
             self.spots = []
             self.pond.requestDelete()
             self.pond = None
-        if self.jukebox:
-            self.jukebox.requestDelete()
         if self.treasurePlanner:
             self.treasurePlanner.stop()
                 

@@ -221,6 +221,7 @@ SCMenuSellbotInvasion = 'SELLBOT INVASION'
 SCMenuFieldOffice = 'FIELD OFFICES'
 SCMenuIdesOfMarch = 'GREEN'
 ScMenuBugs = 'Bugs'
+SCMenuQuotes = 'FAMOUS QUOTES'
 FriendInviteeTooManyFriends = '%s would like to be your friend, but you already have too many friends on your list!'
 FriendInviteeInvitation = '%s would like to be your friend.'
 FriendInviteeOK = lOK
@@ -1282,6 +1283,34 @@ SpeedChatStaticTextToontown = {100: 'Hi!',
  10005: 'Be a honey! Vote Bear!',
  10006: 'Think big! Vote Pig!',
  10007: "Vote Goat - and that's all she wrote!",
+ 10008: "For science... You monster.",
+ 10009: "Rise and shine, Mr. Freeman. Rise ... and ... shine",
+ 10010: "That will be 100,000 bells for your rent, yes yes?",
+ 10011: "War... war never changes.",
+ 10012: "The cake is a lie.",
+ 10013: "Staaaaaaay Fresh!",
+ 10014: "Do a barrel roll!",
+ 10015: "Thank you, Mario, but our princess is in another castle!",
+ 10016: "So you have come this far and still you understand nothing. Every Light must fade, every Heart return to Darkness!",
+ 10017: "Do the windy thing!",
+ 10018: "Reality is an illusion, the universe is a hologram, buy gold, BYE!",
+ 10019: "They will know the joy of creation.",
+ 10020: "The cold never bothered me anyway!",
+ 10021: "Do you want to build a snowman?",
+ 10022: "Love is an open door!",
+ 10023: "We finish each other's sandwiches!",
+ 10024: "It's called a hustle, sweetheart.",
+ 10025: "What do you call a three-humped camel? Pregnant!",
+ 10026: "Life isn't some cartoon musical where you sing a little song and all your insipid dreams magically come true. So let it go.",
+ 10027: "It's the eye of the tiger, the thrill of the fight!",
+ 10028: "On a scale of one to ten, how would you rate your pain?",
+ 10029: "I am programmed to assess everyone's health care needs.",
+ 10030: "Those that suffer a loss require support from friends and loved ones.",
+ 10031: "He'll come back... and I'll be waiting.",
+ 10032: "The jungle is no longer safe for you.",
+ 10033: "I will have you all in my teeth!",
+ 10034: "You have a metal arm? That is AWESOME, dude!",
+ 10035: "You have the right to remain silent!",
  20000: SuitBrushOffs[None][0],
  20001: SuitBrushOffs[None][1],
  20002: SuitBrushOffs[None][2],
