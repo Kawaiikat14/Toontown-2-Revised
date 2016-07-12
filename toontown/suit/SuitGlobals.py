@@ -23,7 +23,7 @@ suitProperties = {'f': (4.0 / cSize, SuitDNA.corpPolyColor, ['flunky', 'glasses'
                   'hh': (6.5 / aSize, SuitDNA.corpPolyColor, ['headhunter'], '', 7.45),
                   'cr': (6.75 / cSize, VBase4(0.85, 0.55, 0.55, 1.0), ['flunky'], 'corporate-raider.jpg', 8.23),
                   'tbc': (7.0 / aSize, VBase4(0.75, 0.95, 0.75, 1.0), ['bigcheese'], '', 9.34),
-                  'tl': (7.3 / aSize, VBase4(2.55, 2.55, 0, 1.0), ['twoface'], 'toxic-leader.jpg', 9.5),
+                  'tl': (7.3 / aSize, VBase4(2.55, 2.55, 0, 1.0), ['yesman'], 'toxic-leader.jpg', 9.5),
                   # Lawbots
                   'bf': (4.0 / cSize, SuitDNA.legalPolyColor, ['tightwad'], 'bottom-feeder.jpg', 4.81),
                   'b': (4.375 / bSize, VBase4(0.95, 0.95, 1.0, 1.0), ['movershaker'], 'blood-sucker.jpg', 6.17),
