@@ -530,6 +530,7 @@ group "toontownCentral" [
    landmark_building "sz18:toon_landmark_TT_library_DNARoot" [
     code [ "toon_landmark_TT_library" ]
     title [ "Toontown Library" ]
+    building_type [ "library" ]
     pos [ 91.4475 -44.9255 4 ]
     nhpr [ 180 0 0 ]
     door [
